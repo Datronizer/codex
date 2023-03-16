@@ -1,35 +1,24 @@
 import React from 'react';
-// import logo from './logo.svg';
+
 import './App.css';
+import { AppNavBar } from './AppNavBar';
 import { AppRouter } from './AppRouter';
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.tsx</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
+type AppProps = {};
+type AppState = {};
 
-function App() {
-  return (
-    <div className='Router'>
-        <AppRouter/>
-    </div>
-  )
+export class App extends React.Component<AppProps, AppState> {
+    public constructor(props: AppProps) { 
+        super(props)
+    }
+
+    public render(): React.ReactNode {
+        return (
+            <div className="App" >
+                <AppNavBar />
+                <br />
+                <AppRouter />
+            </div>
+        );
+    }
 }
-
-export default App;
