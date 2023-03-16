@@ -20,7 +20,7 @@ class InternalDashboard extends React.Component<InternalDashboardProps, Internal
 
     public render(): React.ReactNode {
         return (
-            <div>Hurdur</div>
+            <div>Welcome to The Codex. There is nothing here yet</div>
         );
     }
 }

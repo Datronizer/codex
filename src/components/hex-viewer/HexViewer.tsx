@@ -2,7 +2,7 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
-import { setColor } from '../../util';
+import { formatHexColor, setColor } from '../../util';
 
 /**
  * This page is used to change background colors using a hex input (see utils)
@@ -47,7 +47,7 @@ class InternalHexViewer extends React.Component<InternalHexViewerProps, Internal
                         <Form.Label>Hex Value</Form.Label>
                         <Form.Control
                             type="text"
-                            placeholder="Ex: #ffffff"
+                            placeholder="Ex: #ffffff or ffffff"
                             value={this.state.colorInput}
                             onChange={e => { this.setState({ colorInput: e.target.value }) }}
                         />
@@ -67,7 +67,7 @@ class InternalHexViewer extends React.Component<InternalHexViewerProps, Internal
 
         // TODO: Add server component
         try {
-            setColor(this.state.colorInput);
+            setColor(formatHexColor(this.state.colorInput));
             this.setState({ color: document.body.style.background, colorInput: "" })
         }
         catch (error) {
