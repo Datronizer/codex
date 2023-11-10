@@ -32,7 +32,12 @@ export function formatShortDate(e: Date | string): string
     return DateTime.fromJSDate(new Date(e)).toLocaleString({ month: "short", year: "numeric" })
 }
 
-export function formatShortDateRange(start: Date|string, end: Date|string): string
+export function formatShortDateRange(start: Date | string, end?: Date | string | null): string
 {
+    if (!end || end === null)
+    {
+        return `${formatShortDate(start)} - Ongoing`
+    }
+
     return `${formatShortDate(start)} - ${formatShortDate(end)}`
 }

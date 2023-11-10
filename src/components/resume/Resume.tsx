@@ -2,10 +2,12 @@ import { Container } from "react-bootstrap";
 import resume from "./json/chiens-resume-nov-23.json";
 import { EducationDto } from "./dtos/Education.dto";
 import { formatShortDateRange } from "../../util";
+import { WorkDto } from "./dtos/Work.dto";
 
 export function Resume()
 {
     const education = resume.education.map(e => EducationDto.from(e));
+    const work = resume.work.map(e => WorkDto.from(e));
 
     if (!resume) 
     {
@@ -18,8 +20,11 @@ export function Resume()
 
     return (
         <Container>
+            <h3>Education</h3>
             {education.map(e => <EducationBlock education={e} />)}
-            {/* {work.map(e => <WorkBlock work={e} />)} */}
+
+            <h3>Work</h3>
+            {work.map(e => <WorkBlock work={e} />)}
         </Container>
     );
 }
@@ -27,10 +32,9 @@ export function Resume()
 function EducationBlock(props: { education: EducationDto }) // make new type
 {
     const edu = props.education;
-    
+
     return (
         <div>
-            <h3>Education</h3>
             <p>
                 <strong>{edu.institution}</strong> | {edu.end ? formatShortDateRange(edu.start, edu.end) : "Ongoing"}
                 <br />
@@ -43,3 +47,21 @@ function EducationBlock(props: { education: EducationDto }) // make new type
     )
 }
 
+function WorkBlock(props: { work: WorkDto })
+{
+    const work = props.work;
+
+    return (
+        <div>
+            <p>
+                <strong>{work.workplace.toLocaleUpperCase()}</strong> | {formatShortDateRange(work.start, work.end)}
+                <br />
+                <strong>{work.title}</strong>{work.division ? `, ${work.division}` : null}
+                <br />
+                <ul>
+                    {work.duties?.map(e => <li>{e}</li>)}
+                </ul>
+            </p>
+        </div>
+    )
+}
