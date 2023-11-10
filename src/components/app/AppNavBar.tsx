@@ -19,6 +19,7 @@ export function AppNavBar(props: {})
                         <Nav.Link className="active" href={`${process.env.PUBLIC_URL}/#/about/website`}>Why Trueongod?</Nav.Link>
                         <Nav.Link className="active" href={`${process.env.PUBLIC_URL}/#/hex`}>Hex Viewer</Nav.Link>
                         <Nav.Link className="active" href={`${process.env.PUBLIC_URL}/#/about`}>About</Nav.Link>
+                        <Nav.Link className="active" href={`${process.env.PUBLIC_URL}/#/resume`}>Resume</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />

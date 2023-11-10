@@ -27,9 +27,11 @@ export function AboutMe()
             <p>
                 At the time of writing this, I am a junior software developer at NextRenaissance entertainment,
                 a sister company of uYeti Entertainment. My daily work includes full stack development using
-                TypeScript, ReactJS, NestJS, and Docker to emulate a server environment; front end game 
-                development on Unity using C# and on Phaser 2 using Typescript.
+                TypeScript, ReactJS, SCSS for the front end; NestJS and Docker for the back end; and some front end game 
+                development on Unity using C# & on Phaser 2 using Typescript.
             </p>
+
+            <h1></h1>
         </Container>
     )
 }

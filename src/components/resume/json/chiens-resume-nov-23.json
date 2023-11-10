@@ -1,0 +1,106 @@
+{
+    "education": [
+        {
+            "institution": "University of South Florida - Tampa campus",
+            "start": "2018-08-28",
+            "end": "2022-05-17",
+            "degree": "BA",
+            "majors": [
+                "Creative Writing - English"
+            ],
+            "minors": [
+                "Mathematics"
+            ],
+            "gpa": 3.58,
+            "achievements": [
+                "Graduated Cum Laude",
+                "On Dean's List for 3 years",
+                "Received USF Presidential Scholarship"
+            ],
+            "accolades": [
+                "Pi Mu Epsilon Math Honor Society",
+                "Honors' College Medallion of Excellence"
+            ]
+        }
+    ],
+    "work": [
+        {
+            "title": "Junior Software Developer",
+            "workplace": "",
+            "location": "",
+            "start": "",
+            "end": "",
+            "responsibilities": [
+                "",
+                "",
+                "",
+                ""
+            ]
+        },
+        {
+            "title": "Editor & Research Associate",
+            "workplace": "",
+            "location": "",
+            "start": "",
+            "end": "",
+            "responsibilities": [
+                "",
+                "",
+                "",
+                ""
+            ]
+        },
+        {
+            "title": "Assistant Director of Technology",
+            "workplace": "",
+            "location": "",
+            "start": "",
+            "end": "",
+            "responsibilities": [
+                "",
+                "",
+                "",
+                ""
+            ]
+        },
+        {
+            "title": "Peer Leader / Tech Lead",
+            "workplace": "",
+            "location": "",
+            "start": "",
+            "end": "",
+            "responsibilities": [
+                "",
+                "",
+                "",
+                ""
+            ]
+        },
+        {
+            "title": "",
+            "workplace": "",
+            "location": "",
+            "start": "",
+            "end": "",
+            "responsibilities": [
+                "",
+                "",
+                "",
+                ""
+            ]
+        },
+        {
+            "title": "",
+            "workplace": "",
+            "location": "",
+            "start": "",
+            "end": "",
+            "responsibilities": [
+                "",
+                "",
+                "",
+                ""
+            ]
+        }
+    ]
+}

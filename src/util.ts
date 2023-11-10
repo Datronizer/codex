@@ -1,13 +1,18 @@
+import { DateTime } from 'luxon';
+
 export * from './util'
 
 /// Hex Color functions
-export function isHexColor(str: string): boolean {
+export function isHexColor(str: string): boolean
+{
     let reg = /^#[0-9A-F]{6}$/i;
     return reg.test(str);
 }
 
-export function setColor(colorInput: string): void {
-    switch (isHexColor(colorInput)) {
+export function setColor(colorInput: string): void
+{
+    switch (isHexColor(colorInput))
+    {
         case true:
             document.body.style.backgroundColor = colorInput;
             break;
@@ -17,6 +22,17 @@ export function setColor(colorInput: string): void {
     }
 }
 
-export function formatHexColor(str: string): string {
+export function formatHexColor(str: string): string
+{
     return str[0] !== '#' ? `#${str}` : str;
+}
+
+export function formatShortDate(e: Date | string): string
+{
+    return DateTime.fromJSDate(new Date(e)).toLocaleString({ month: "short", year: "numeric" })
+}
+
+export function formatShortDateRange(start: Date|string, end: Date|string): string
+{
+    return `${formatShortDate(start)} - ${formatShortDate(end)}`
 }
