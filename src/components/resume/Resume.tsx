@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import resume from "./json/chiens-resume-nov-23.json";
+import resume from "./json/chiens-resume-nov-23.json"; // Replace this with proper back-end information
 import { EducationDto } from "./dtos/Education.dto";
 import { formatShortDateRange } from "../../util";
 import { WorkDto } from "./dtos/Work.dto";
@@ -56,7 +56,7 @@ function WorkBlock(props: { work: WorkDto })
             <p>
                 <strong>{work.workplace.toLocaleUpperCase()}</strong> | {formatShortDateRange(work.start, work.end)}
                 <br />
-                <strong>{work.title}</strong>{work.division ? `, ${work.division}` : null}
+                <strong>{work.title}</strong>{work.division ? <em>, {work.division}</em> : null}
                 <br />
                 <ul>
                     {work.duties?.map(e => <li>{e}</li>)}

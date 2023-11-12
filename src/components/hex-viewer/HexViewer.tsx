@@ -45,6 +45,7 @@ class InternalHexViewer extends React.Component<InternalHexViewerProps, Internal
     }
 
     public render(): React.ReactNode {
+        //https://coolors.co/2f6690-3a7ca5-d9dcd6-16425b-81c3d7
         return (
             <Container>
                 <Row>

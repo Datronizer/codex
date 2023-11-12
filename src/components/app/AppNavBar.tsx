@@ -3,8 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-export function AppNavBar(props: {})
-{
+export function AppNavBar(props: {}) {
     return (
         <Navbar bg="dark" variant="dark" sticky="top" expand="lg">
             <Container>
@@ -13,7 +12,6 @@ export function AppNavBar(props: {})
                     <img id="navbar-logo" src={`${process.env.PUBLIC_URL}/logo.png`} alt="" height="32" />
                     True, On God
                 </Navbar.Brand>
-                <Navbar.Toggle aria-controls="navbarNavAltMarkup" />
                 <Navbar.Collapse id="navbarNavAltMarkup">
                     <Nav>
                         <Nav.Link className="active" href={`${process.env.PUBLIC_URL}/#/about/website`}>Why Trueongod?</Nav.Link>
@@ -23,8 +21,6 @@ export function AppNavBar(props: {})
                     </Nav>
                 </Navbar.Collapse>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-
-                {/* <Button variant="outline-light" size="sm" onClick={() => props.onLogout()}><b className="p-3">Log Out</b></Button> */}
             </Container>
         </Navbar>
     );
