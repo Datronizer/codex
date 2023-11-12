@@ -30,8 +30,6 @@ export function AboutMe()
                 TypeScript, ReactJS, SCSS for the front end; NestJS and Docker for the back end; and some front end game 
                 development on Unity using C# & on Phaser 2 using Typescript.
             </p>
-
-            <h1></h1>
         </Container>
     )
 }

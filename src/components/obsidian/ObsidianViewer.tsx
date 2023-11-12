@@ -1,4 +1,4 @@
-import { Marked } from "marked"
+// import { Marked } from "marked"
 import React from "react"
 
 type P = {}
@@ -13,7 +13,7 @@ export class ObsidianViewer extends React.Component<P, S>
     }
 
     public render() {
-        const marked = new Marked();
+        // const marked = new Marked();
         return (
             <section>
                 <article dangerouslySetInnerHTML={{ __html: this.state.note }}></article>
@@ -21,5 +21,4 @@ export class ObsidianViewer extends React.Component<P, S>
             </section >
         )
     }
-
 }
