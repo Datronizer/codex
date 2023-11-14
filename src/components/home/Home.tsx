@@ -1,10 +1,10 @@
-import { Container } from "react-bootstrap";
+import "../css/Home.css"
 
 export function Home()
 {
     return (
-        <Container>
+        <div className="center">
             <h1>Coming soon</h1>
-        </Container>
+        </div>
     )
 }
