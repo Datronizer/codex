@@ -6,7 +6,7 @@ import { Home } from "../home/Home";
 import { AboutMe } from "../resume/AboutMe";
 import { Coding } from "../resume/Coding";
 import { Writing } from "../resume/Writing";
-import { WhyTheName } from "../resume/WhyTheName";
+import { AboutSite } from "../resume/AboutSite";
 import { Resume } from "../resume/Resume";
 
 export function AppRouter()
@@ -24,7 +24,7 @@ export function AppRouter()
                     <Route path="" element={<AboutMe />} />
                     <Route path="coding" element={<Coding />} />
                     <Route path="writing" element={<Writing />} />
-                    <Route path="website" element={<WhyTheName />} />
+                    <Route path="site" element={<AboutSite />} />
                 </Route>
 
                 <Route path="resume">

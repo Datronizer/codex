@@ -5,3 +5,7 @@
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
+.bg {
+    background-image: url("https://cdnb.artstation.com/p/assets/images/images/049/410/861/large/chien-truong-quoc-final.jpg?1652426905");
+}
