@@ -1,6 +1,8 @@
-/* .App {
-  text-align: center;
-} */
+.App {
+  /* text-align: center; */
+  /* background-image: url("https://cdnb.artstation.com/p/assets/images/images/049/410/861/large/chien-truong-quoc-final.jpg?1652426905");
+  background-size: contain; */
+}
 
 .App-logo {
   height: 40vmin;
@@ -32,6 +34,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

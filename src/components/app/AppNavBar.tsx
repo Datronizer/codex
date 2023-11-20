@@ -7,7 +7,6 @@ export function AppNavBar(props: {})
 {
     return (
         <Navbar bg="dark" variant="dark" sticky="top" expand="lg" >
-
             <Navbar.Collapse id="navbarNavAltMarkup" className="center-nav">
                 <Nav>
                     <Nav.Link className="active" href={`${process.env.PUBLIC_URL}/#/about`}>About</Nav.Link>

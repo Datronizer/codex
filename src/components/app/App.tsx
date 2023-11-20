@@ -9,15 +9,14 @@ type AppProps = {};
 type AppState = {};
 
 export class App extends React.Component<AppProps, AppState> {
-    public constructor(props: AppProps) { 
+    public constructor(props: AppProps) {
         super(props)
     }
 
     public render(): React.ReactNode {
         return (
-            <div className="App bg" >
+            <div className="App" >
                 <AppNavBar />
-                <br />
                 <AppRouter />
                 <AppFooter />
             </div>

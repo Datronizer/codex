@@ -1,6 +1,7 @@
-export function AppFooter()
-{
+export function AppFooter() {
     return (
-        <footer></footer>
+        <footer>
+            Hello, world
+        </footer>
     )
 }

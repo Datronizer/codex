@@ -9,3 +9,12 @@
 .bg {
     background-image: url("https://cdnb.artstation.com/p/assets/images/images/049/410/861/large/chien-truong-quoc-final.jpg?1652426905");
 }
+
+.carousel-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    /* height: calc(100vh - 56px - 24px) !important; */
+    /* width: 75vw; */
+    /* left: 16.5vw */
+}
