@@ -35,7 +35,7 @@ export class Home extends React.Component<P, S>
     public async componentWillUnmount(): Promise<void>
     {
         clearInterval(this.state.interval);
-        this.setState({interval: undefined})
+        this.setState({ interval: undefined });
     }
 
     async getLanyard(): Promise<void>
@@ -43,7 +43,7 @@ export class Home extends React.Component<P, S>
         const lanyard: LanyardRoot = await Server.get("https://api.lanyard.rest/v1/users/437801040843112450");
         const lanyardData: LanyardData = lanyard.data;
 
-        console.log(lanyardData)
+        console.log(lanyardData);
         this.setState({ lanyardData });
     }
 
@@ -66,7 +66,11 @@ export class Home extends React.Component<P, S>
                         <Card.Body className="discord-box">
                             <Row>
                                 <Col style={{ maxWidth: "fit-content" }}>
-                                    <img className="discord-avatar" src={`${CDN}/avatars/${data.discord_user?.id}/${data.discord_user?.avatar}`} />
+                                    <img
+                                        alt="Discord avatar"
+                                        className="discord-avatar"
+                                        src={`${CDN}/avatars/${data.discord_user?.id}/${data.discord_user?.avatar}`}
+                                    />
                                 </Col>
                                 <Col className="username">
                                     <b>{data.discord_user?.global_name}</b>
@@ -134,6 +138,7 @@ function GameCard(props: { activity?: LanyardActivity; }): JSX.Element | null
             <Row>
                 <Col style={{ maxWidth: "fit-content" }}>
                     <img
+                        alt="Game icon"
                         style={{ width: "4.5rem", borderRadius: "0.5rem" }}
                         src={`${CDN}/app-assets/${props.activity.application_id}/${props.activity.assets?.large_image}`}
                     />
@@ -161,6 +166,7 @@ function SpotifyCard(props: { spotify?: LanyardSpotify; }): JSX.Element | null
                 <Col><h6><b>LISTENING ON SPOTIFY</b></h6></Col>
                 <Col className="spotify-logo">
                     <img
+                        alt="Spotify logo"
                         style={{ maxWidth: "1.5rem" }}
                         src="https://i0.wp.com/www.freepnglogos.com/uploads/spotify-logo-png/spotify-download-logo-30.png"
                     />
@@ -169,6 +175,7 @@ function SpotifyCard(props: { spotify?: LanyardSpotify; }): JSX.Element | null
             <Row>
                 <Col style={{ maxWidth: "fit-content" }}>
                     <img
+                        alt="Album logo"
                         style={{ width: "4.5rem", borderRadius: "0.5rem" }}
                         src={props.spotify.album_art_url}
                     />
@@ -182,14 +189,4 @@ function SpotifyCard(props: { spotify?: LanyardSpotify; }): JSX.Element | null
             </Row>
         </Row>
     );
-}
-
-function isPlaying(activities: LanyardActivity[]): boolean
-{
-    if (activities.length === 0)
-    {
-        return false;
-    }
-
-    return activities.filter(e => e.name !== "Spotify").length > 0;
 }
