@@ -1,42 +1,195 @@
-import { Carousel, Container } from "react-bootstrap"
-import "../css/Home.css"
+import React from "react";
+import "../css/Home.css";
+import { Server } from "../../Server";
+import
+{
+    Root as LanyardRoot,
+    Data as LanyardData,
+    Activity as LanyardActivity,
+    Spotify as LanyardSpotify
+} from "./dtos/LanyardTypes";
+import { Card, Col, Row } from "react-bootstrap";
 
-export function Home() {
+const CDN = "https://cdn.discordapp.com/";
+const DISCORD_ID = "437801040843112450";
+
+type P = {};
+type S = {
+    interval?: NodeJS.Timer;
+    lanyardData?: LanyardData;
+};
+export class Home extends React.Component<P, S>
+{
+    public constructor(props: P)
+    {
+        super(props);
+        this.state = { lanyardData: undefined };
+    }
+
+    public async componentDidMount(): Promise<void>
+    {
+        this.getLanyard();
+        this.setState({ interval: setInterval(async () => await this.getLanyard(), 1000 * 30) });
+    }
+
+    public async componentWillUnmount(): Promise<void>
+    {
+        clearInterval(this.state.interval);
+        this.setState({interval: undefined})
+    }
+
+    async getLanyard(): Promise<void>
+    {
+        const lanyard: LanyardRoot = await Server.get("https://api.lanyard.rest/v1/users/437801040843112450");
+        const lanyardData: LanyardData = lanyard.data;
+
+        console.log(lanyardData)
+        this.setState({ lanyardData });
+    }
+
+    public override render(): React.ReactNode
+    {
+        const data = this.state.lanyardData;
+
+        if (!data)
+        {
+            return null;
+        }
+
+        const game = data.activities.filter(e => e.name !== "Spotify")[0] ?? undefined;
+
+        return (
+            <div id="container">
+                <img src="https://free4kwallpapers.com/uploads/originals/2021/03/02/sunset-at-the-ocean-wallpaper.jpg" className="banner" alt="Temporary Background" />
+                <section id="overlay">
+                    <Card style={{ backgroundColor: "#23272a" }}>
+                        <Card.Body className="discord-box">
+                            <Row>
+                                <Col style={{ maxWidth: "fit-content" }}>
+                                    <img className="discord-avatar" src={`${CDN}/avatars/${data.discord_user?.id}/${data.discord_user?.avatar}`} />
+                                </Col>
+                                <Col className="username">
+                                    <b>{data.discord_user?.global_name}</b>
+                                </Col>
+                                <Col className="button-container">
+                                    <div>
+                                        <button
+                                            className="view-profile"
+                                            onClick={() => window.location.href = `https://discord.com/users/${DISCORD_ID}`}
+                                        >
+                                            View Profile
+                                        </button>
+                                    </div>
+                                </Col>
+                            </Row>
+                            {
+                                data.spotify || game
+                                    ? <>
+                                        <hr style={{ border: "0.1rem solid lightgray" }} />
+                                        <Row>
+                                            <Col>
+                                                {
+                                                    data.spotify && game
+                                                        ? <>
+                                                            <SpotifyCard spotify={data.spotify} />
+                                                            <hr style={{ border: "0.1rem solid lightgray" }} />
+                                                            <GameCard activity={data.activities.filter(e => e.name !== "Spotify")[0]} />
+                                                        </>
+                                                        : data.spotify
+                                                            ? <SpotifyCard spotify={data.spotify} />
+                                                            : <GameCard activity={data.activities.filter(e => e.name !== "Spotify")[0]} />
+                                                }
+
+                                            </Col>
+                                        </Row>
+                                    </>
+                                    : <div className="activities">Hmm... Looks like Chien isn't doing anything at the moment</div>
+                            }
+                        </Card.Body>
+                    </Card>
+                    <br />
+                    <Card style={{ backgroundColor: "#23272a" }}>
+                        <Card.Body className="" style={{ color: "white" }}>
+                            <Row>
+                                Blog goes here
+                            </Row>
+                        </Card.Body>
+                    </Card>
+                </section>
+            </div>
+        );
+    }
+}
+
+function GameCard(props: { activity?: LanyardActivity; }): JSX.Element | null
+{
+    if (!props.activity)
+    {
+        return null;
+    }
+
     return (
-        <>
-            <Container className="justify-content-center">
-                <Carousel fade className="justify-content-center">
-                    <Carousel.Item className="justify-content-center">
-                        {/* <ExampleCarouselImage text="First slide" /> */}
-                        <img alt="First Slide" src="https://cdnb.artstation.com/p/assets/images/images/049/410/861/large/chien-truong-quoc-final.jpg?1652426905" className="justify-content-center"/>
-                        <Carousel.Caption>
-                            <h3>First slide label</h3>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        {/* <ExampleCarouselImage text="Second slide" /> */}
-                        <img alt="Second Slide" src="https://cdnb.artstation.com/p/assets/images/images/049/410/861/large/chien-truong-quoc-final.jpg?1652426905" />
-                        <Carousel.Caption>
-                            <h3>Second slide label</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        {/* <ExampleCarouselImage text="Third slide" /> */}
-                        <img alt="Third Slide" src="https://cdnb.artstation.com/p/assets/images/images/049/410/861/large/chien-truong-quoc-final.jpg?1652426905" />
-                        <Carousel.Caption>
-                            <h3>Third slide label</h3>
-                            <p>
-                                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                            </p>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                </Carousel>
-            </Container>
-            <section className="center">
-                Coming Soon
-            </section>
-        </>
-    )
+        <Row style={{ color: "white" }}>
+            <h6><b>PLAYING A GAME</b></h6>
+            <Row>
+                <Col style={{ maxWidth: "fit-content" }}>
+                    <img
+                        style={{ width: "4.5rem", borderRadius: "0.5rem" }}
+                        src={`${CDN}/app-assets/${props.activity.application_id}/${props.activity.assets?.large_image}`}
+                    />
+                </Col>
+                <Col className="spotify-title">
+                    <div>{props.activity.name}</div>
+                    <div><small>{props.activity.details ?? null}</small></div>
+                    <div><small>{props.activity.state}</small></div>
+                </Col>
+            </Row>
+        </Row>
+    );
+}
+
+function SpotifyCard(props: { spotify?: LanyardSpotify; }): JSX.Element | null
+{
+    if (!props.spotify)
+    {
+        return null;
+    }
+
+    return (
+        <Row style={{ color: "white" }}>
+            <Row>
+                <Col><h6><b>LISTENING ON SPOTIFY</b></h6></Col>
+                <Col className="spotify-logo">
+                    <img
+                        style={{ maxWidth: "1.5rem" }}
+                        src="https://i0.wp.com/www.freepnglogos.com/uploads/spotify-logo-png/spotify-download-logo-30.png"
+                    />
+                </Col>
+            </Row>
+            <Row>
+                <Col style={{ maxWidth: "fit-content" }}>
+                    <img
+                        style={{ width: "4.5rem", borderRadius: "0.5rem" }}
+                        src={props.spotify.album_art_url}
+                    />
+                </Col>
+                <Col className="spotify-title">
+                    <div>{props.spotify.song}</div>
+                    <div><small>{props.spotify.artist}</small></div>
+                    <div><small>on {props.spotify.album}</small></div>
+                    {/* TODO: Add a duration bar here. On duration over, do a get request, else do it every 30s to save API */}
+                </Col>
+            </Row>
+        </Row>
+    );
+}
+
+function isPlaying(activities: LanyardActivity[]): boolean
+{
+    if (activities.length === 0)
+    {
+        return false;
+    }
+
+    return activities.filter(e => e.name !== "Spotify").length > 0;
 }

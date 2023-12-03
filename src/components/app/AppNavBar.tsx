@@ -10,7 +10,7 @@ export function AppNavBar(props: {})
             <Navbar.Collapse id="navbarNavAltMarkup" className="center-nav">
                 <Nav>
                     <Nav.Link className="active" href={`${process.env.PUBLIC_URL}/#/about`}>About</Nav.Link>
-                    <Nav.Link className="active" href={`${process.env.PUBLIC_URL}/#/about/site`}>Website</Nav.Link>
+                    <Nav.Link className="active" href={`${process.env.PUBLIC_URL}/#/about/site`}>Blog</Nav.Link>
 
                     <Navbar.Brand href={`${process.env.PUBLIC_URL}/#/`} aria-label="Homepage">
                         {/* <img id="navbar-logo" src={`${process.env.PUBLIC_URL}/logo.png`} alt="" height="32" /> */}

@@ -3,7 +3,7 @@ import React from 'react';
 import './App.css';
 import { AppNavBar } from './AppNavBar';
 import { AppRouter } from './AppRouter';
-import { AppFooter } from './AppFooter';
+import { Footer } from './Footer';
 
 type AppProps = {};
 type AppState = {};
@@ -18,7 +18,7 @@ export class App extends React.Component<AppProps, AppState> {
             <div className="App" >
                 <AppNavBar />
                 <AppRouter />
-                <AppFooter />
+                <Footer />
             </div>
         );
     }
