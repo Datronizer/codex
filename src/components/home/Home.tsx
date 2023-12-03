@@ -43,7 +43,6 @@ export class Home extends React.Component<P, S>
         const lanyard: LanyardRoot = await Server.get("https://api.lanyard.rest/v1/users/437801040843112450");
         const lanyardData: LanyardData = lanyard.data;
 
-        console.log(lanyardData);
         this.setState({ lanyardData });
     }
 
