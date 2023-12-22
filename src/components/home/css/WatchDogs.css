@@ -1,6 +1,7 @@
 @import "./Hexagon.css";
-@import "./TerminalDot.css";
 @import "./Loading.css";
+@import "./TerminalDot.css";
+@import "./Triangle.css";
 
 .main-container {
     background-color: black;
@@ -19,7 +20,7 @@
     text-align: left;
 
     animation-name: establishing-wait;
-    animation-duration: 3s;
+    animation-duration: 2s;
     animation-timing-function: linear;
 
 }

@@ -1,0 +1,99 @@
+.triangle {
+    width: 12rem;
+    height: 12rem;
+    background: #fff;
+    position: absolute;
+}
+
+.triangle::before,
+.triangle::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    position: absolute;
+}
+
+.triangle::before {
+    transform:
+        rotate(30deg) translateX(-31.5%) translateY(-19%);
+}
+
+.triangle::after {
+    transform:
+        rotate(-30deg) translateX(31.5%) translateY(-19%);
+}
+
+.triangle,
+.triangle::before,
+.triangle::after { background: transparent; }
+
+/* .triangle { border-top: solid 1px #fff; }
+.triangle::before { border-right: solid 1px #fff; }
+.triangle::after { border-left: solid 1px #fff; } */
+
+.circle {
+    width: 7rem;
+    height: 7rem;
+    background: transparent;
+    position: absolute;
+
+    border-radius: 4rem;
+    /* border: solid 1px #fff; */
+    transform: translateY(-36%);
+}
+
+
+.triangle,
+.triangle::before,
+.triangle::after,
+.circle {
+    animation-delay: 0s;
+    animation-duration: 0.6s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
+
+.triangle { animation-name: triangle-top; }
+.triangle::before { animation-name: triangle-left; }
+.triangle::after { animation-name: triangle-right; }
+.circle { animation-name: circle-flash;}
+
+
+@keyframes triangle-top {
+    0% { border-top: solid 1px #fff; }
+    18% { border: none; }
+    36% { border: none; }
+    54% { border: none; }
+    72% { border-top: solid 1px #fff; }
+    90% { border: none; }
+    100% { border-top: solid 1px #fff; }
+}
+@keyframes triangle-left {
+    0% { border-right: solid 1px #fff; }
+    18% { border: none; }
+    36% { border: none; }
+    54% { border: none; }
+    72% { border-right: solid 1px #fff; }
+    90% { border: none; }
+    100% { border-right: solid 1px #fff; }
+}
+@keyframes triangle-right {
+    0% { border-left: solid 1px #fff; }
+    18% { border: none; }
+    36% { border: none; }
+    54% { border: none; }
+    72% { border-left: solid 1px #fff; }
+    90% { border: none; }
+    100% { border-left: solid 1px #fff; }
+}
+
+@keyframes circle-flash {
+    0% { border: none; }
+    18% { border: none; }
+    36% { border: solid 1px #fff; }
+    54% { border: none; }
+    72% { border: none ;}
+    90% { border: none; }
+    100% { border: solid 1px #fff ;}
+}

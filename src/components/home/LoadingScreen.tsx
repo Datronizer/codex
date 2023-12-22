@@ -33,6 +33,11 @@ export class LoadingScreen extends React.Component<P, S>
         this.setState({ userLocation: await Server.get(`http://ip-api.com/json/${ip}`) });
     }
 
+    private jumbledText(text: string)
+    {
+        
+    }
+
     public render(): React.ReactNode
     {
         // console.log(this.state);
@@ -43,10 +48,12 @@ export class LoadingScreen extends React.Component<P, S>
         {
             return (
                 <div className="main-container">
-                    {/* 3s terminal dot flash (3s) */}
+                    {/* 0.6s dot flash x2 (1.2s) */}
                     <div className="terminal-dot" />
 
                     {/* Random symbols flash */}
+                    <div className="triangle" />
+                    <div className="circle" />
 
                     {/* Establishing \n Connection 1s , no loading ellipses,
                     Do the WatchDogs white bars covering the text (look up Inintializing)
@@ -66,6 +73,8 @@ export class LoadingScreen extends React.Component<P, S>
 
         return (
             <div className="main-container">
+                <div className="triangle" />
+                <div className="circle" />
 
                 {/* 2 terminal dot flashes */}
 
@@ -105,14 +114,14 @@ export class LoadingScreen extends React.Component<P, S>
                 */}
                 {/* Chien "TrueOnGod" Truong forms from jumbled text */}
 
-                
-                <div className="square-centered-container">
+
+                {/* <div className="square-centered-container">
                     <div className="connection">
                         <h1>Connection established</h1>
                         <h1>{userIp}</h1>
                         <h1>{userLocation?.city}</h1>
                     </div>
-                </div>
+                </div> */}
 
                 {/* 0.6s hex flash () */}
                 <div className="hexagon" />
