@@ -1,0 +1,37 @@
+@import "./Hexagon.css";
+@import "./TerminalDot.css";
+@import "./Loading.css";
+
+.main-container {
+    background-color: black;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+    height: 100vh;
+
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.establishing-container {
+    text-align: left;
+
+    animation-name: establishing-wait;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+
+}
+@keyframes establishing-wait {
+    0% {
+        color: transparent;
+    }
+    99% {
+        color: transparent;
+    }
+}
+
+.square-centered-container {
+    text-align: left;
+}

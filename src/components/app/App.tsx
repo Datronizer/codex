@@ -16,9 +16,9 @@ export class App extends React.Component<AppProps, AppState> {
     public render(): React.ReactNode {
         return (
             <div className="App" >
-                <AppNavBar />
+                {/* <AppNavBar /> */}
                 <AppRouter />
-                <Footer />
+                {/* <Footer /> */}
             </div>
         );
     }

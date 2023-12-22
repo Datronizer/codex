@@ -8,6 +8,7 @@ import { Coding } from "../resume/Coding";
 import { Writing } from "../resume/Writing";
 import { AboutSite } from "../resume/AboutSite";
 import { Resume } from "../resume/Resume";
+import { LoadingScreen } from "../home/LoadingScreen";
 
 export function AppRouter()
 {
@@ -15,6 +16,7 @@ export function AppRouter()
         <HashRouter>
             <Routes>
                 <Route path="" element={<Home />} />
+                <Route path="home/test" element={<LoadingScreen />} />
                 {/* <Route path="/dashboard" element={<Dashboard />} /> */}
 
                 <Route path="hex" element={<HexViewer />} />
