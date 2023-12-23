@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
 import "./css/WatchDogs.css";
 import { Server } from "../../Server";
@@ -22,8 +22,7 @@ export class LoadingScreen extends React.Component<P, S>
             userIp: undefined,
             userLocation: undefined,
 
-            jumbledText1: this.jumbleText("Establishing connection")
-            // jumbledText1: "Establishing connection"
+            jumbledText1: this.scramble("Establishing connection"),
         };
     }
 
@@ -32,170 +31,141 @@ export class LoadingScreen extends React.Component<P, S>
         setTimeout(async () =>
             this.setState({
                 userIp: await Server.get("https://api.ipify.org?format=json").then(e => e.ip),
+                userLocation: await Server.get(`http://ip-api.com/json/`).then(e => IpLocationDto.from(e))
             }),
-            100000 // please change back to 6000
+            8000 // please change back to 6000
         );
 
-        // setTimeout(() => this.unjumbledText("Establishing connection"), 6000)
+        setTimeout(() => this.buildText(this.state.jumbledText1), 2500);
+        setTimeout(() => this.unscramble("Establishing connection"), 4500);
+
+        setTimeout(() => window.location.hash = "/home", 12500 + 8000);
     }
 
-    private async getUserLocation(ip: string)
-    {
-        this.setState({ userLocation: await Server.get(`http://ip-api.com/json/${ip}`) });
-    }
-
-    private jumbleText(text: string): string
+    private scramble(text: string): string
     {
         return text
             ? text.split("").map(() => getRandomChar()).join("")
             : "Default string";
     }
 
-    private unjumbledText(originalText: string): void
+    private unscramble(text: string): void
     {
         let iterations = 0;
 
         const interval = setInterval(() =>
         {
-            console.log(this.state.jumbledText1)
-            this.setState({
-                jumbledText1: this.state.jumbledText1.split("")
-                    .map((c, i) =>
-                    {
-                        if (i < originalText.length)
-                        {
-                            return originalText[i]
-                        }
-                        return getRandomChar()
-                    })
-                    .join("")
-            })
-
-            if (iterations >= originalText.length) { clearInterval(interval) }
-            iterations += 1;
-        },
-            250
-        )
-    }
-
-    private TextScrambler(props: { originalText: string }): JSX.Element | null
-    {
-        const originalText = props.originalText ?? this.state.jumbledText1
-        let text = "Establishing connection";
-        let iterations = 0;
-
-        const interval = setInterval(() =>
-        {
-            text.split("")
-                .map((c, i) => i < originalText.length
-                    ? originalText[i]
+            const s = this.state.jumbledText1.split("")
+                .map((_c, i) => i < iterations
+                    ? text[i]
                     : getRandomChar())
-                .join("")
+                .join("");
+            this.setState({ jumbledText1: s });
 
-            if (iterations >= originalText.length) { clearInterval(interval) }
-            iterations += 1;
+            if (iterations >= text.length) { clearInterval(interval); }
+            iterations += 1 / 2;
         },
-            250
-        )
-
-        return (
-            <h1>{text}</h1>
-        )
+            30
+        );
     }
 
-    private unscramble1(): void
+    private buildText(text: string): void
     {
-        const elt = document.getElementById("scramble-1")
-        if (!elt) { return; }
-
-        console.log(elt.innerText)
-        let originalText = "Establishing connection";
-
         let iterations = 0;
+        let original = text;
 
         const interval = setInterval(() =>
         {
-            elt.innerText.split("")
-                .map((c, i) => i < originalText.length
-                    ? c = originalText[i]
-                    : c = getRandomChar())
-                .join("")
+            const s = original.split("")
+                .map((_c, i) => i < iterations
+                    ? text[i]
+                    : "")
+                .join("");
+            this.setState({ jumbledText1: s });
 
-            if (iterations >= originalText.length) { clearInterval(interval) }
+            if (iterations >= text.length) { clearInterval(interval); }
             iterations += 1;
         },
-            250
-        )
+            30
+        );
     }
 
     public render(): React.ReactNode
     {
-        // console.log(this.state);
         const userIp = this.state.userIp;
         const userLocation = this.state.userLocation;
 
-        if (!userIp)
+        if (!userIp || !userLocation)
         {
             return (
                 <div className="main-container">
                     {/* 0.6s dot flash x2 (1.2s) */}
-                    <div className="terminal-dot" />
+                    <div className="terminal-dot sequence-1" />
 
                     {/* Random symbols flash */}
                     <div className="triangle" />
                     <div className="circle" />
 
+
                     {/* Establishing \n Connection 1s , no loading ellipses,
                     Do the WatchDogs white bars covering the text (look up Inintializing)
                     */}
-
-                    {/* 2 flashes, cubic zoom, transition to found data */}
-
-                    {/* >3s Fake search (6s) */}
-                    <div className="establishing-container">
-                        {/* <div onMouseOver={() => this.unjumbledText("Establishing connection")}> */}
-                        <h1 id="scramble-1" onMouseOver={() => this.unscramble1()}>Steam winter sale</h1>
-                        {/* <this.TextScrambler originalText="Establishing connection" /> */}
-                        {/* </div> */}
-                    </div>
+                    <h3 id="scramble-1">{this.state.jumbledText1}</h3>
                 </div>
             );
         }
 
-        if (!userLocation) { this.getUserLocation(userIp); }
+        const sentences: { header: string, content: string; }[] = [
+            { header: `ExtAccessLogger -- Validating`, content: "" },
+            { header: ``, content: "" },
+            { header: `Accessing from: `, content: `${userLocation.city} ${userLocation.region}, ${userLocation.country}` },
+            { header: `IPv4: `, content: `${userIp}` },
+            { header: `ISP: `, content: `${userLocation.org}` },
+            { header: ``, content: "" },
+            { header: `Latitude: `, content: `${userLocation.lat}` },
+            { header: `Longitude: `, content: `${userLocation.lon}` },
+            { header: ``, content: "" },
+            { header: `ExtAccessLogger -- Validated!`, content: "" },
+            { header: `ExtAccessLogger -- Exiting`, content: "" },
+        ];
 
         return (
             <div className="main-container">
+                <div className="star" />
+                <div className="spin-hex" />
+
                 <div className="triangle" />
                 <div className="circle" />
 
-                {/* 2 terminal dot flashes */}
+                <h3 id="established-2">### Connection established ###</h3>
 
-                {/* "Estalished" builds itself letter by letter next to terminal dot */}
+                {/* 2 terminal dot flashes */}
+                <div className="terminal-dot sequence-2" />
+
 
                 {/* Make fake animated terminal screen with user data */}
-                {/* Terminal starts up slow, 1/3s per line so user sees their data being laid out 
-
-                Example:
-                > GeneralAuthLogger -- Validating (1s) `cyan`
-                >
-                > Accessing from: Toronto, ON, Canada (1/3s)
-                > IPv4: xxx.xxx.xxx.xxx (builds itself up slowly)
-                > ISP: Rogers Telecom
-                > (1s)
-                > Latitude: xx.xxxxx (1/2s)
-                > Longitude: xx.xxxxx
-                > (1s)
-                > GeneralAuthLogger -- Validated! `cyan`
-                > GeneralAuthLogger -- Exiting
-
-                titles should be grayed, only data is white.
-                */}
-
                 {/* When terminal done, immiediately goes away */}
-
                 {/* 2 Terminal dot flashes */}
+                <div className="square-centered-container">
+                    <div className="connection">
+                        <Card className="terminal">
+                            <Card.Header className="terminal-card-header">ext-logger.sh</Card.Header>
+                            <Card.Body>
+                                <ul id="terminal-sentences">
+                                    {sentences.map((s, i) =>
+                                        <li className="terminal-line" style={{ color: i === 0 || i === 9 || i === 10 ? "cyan !important" : "" }}>
+                                            <div className="terminal-header">{s.header}</div><div className="terminal-content">{s.content}</div>
+                                        </li>
+                                    )}
+                                </ul>
+                            </Card.Body>
+                        </Card>
+                    </div>
+                </div>
+
+                {/* "Estalished" builds itself letter by letter next to terminal dot */}
                 {/* "Retrieving profile" */}
+                <h3 id="retrieving">### Retrieving profile ###</h3>
 
                 {/* Now render home page */}
 
@@ -206,15 +176,6 @@ export class LoadingScreen extends React.Component<P, S>
                     For background art, 
                 */}
                 {/* Chien "TrueOnGod" Truong forms from jumbled text */}
-
-
-                <div className="square-centered-container">
-                    <div className="connection">
-                        <h1>Connection established</h1>
-                        <h1>{userIp}</h1>
-                        <h1>{userLocation?.city}</h1>
-                    </div>
-                </div>
 
                 {/* 0.6s hex flash () */}
                 <div className="hexagon" />

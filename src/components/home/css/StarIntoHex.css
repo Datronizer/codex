@@ -1,0 +1,110 @@
+.star {
+    width: 12rem;
+    height: 12rem;
+
+    background: transparent;
+
+    position: absolute;
+    transform: translateX(6rem);
+}
+
+.star::before,
+.star::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    /* background: #fff; */
+    position: absolute;
+    z-index: 88;
+    /* border-left: solid 1px #fff; */
+}
+
+.star::before {
+    transform: rotate(60deg) translateX(2.9rem) translateY(5.2rem);
+}
+.star::after {
+    transform: rotate(-60deg) translateX(2.9rem) translateY(-5.2rem);
+}
+
+.star,
+.star::before,
+.star::after{
+    animation-name: star-flash;
+    animation-delay: 2.1s;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
+
+@keyframes star-flash {
+    0% { border-left: solid 1px #fff; }
+    18% { border: none; }
+    36% { border: none; }
+    54% { border: none; }
+    /* 72% { border-left: solid 1px #fff; } */
+    90% { border: none; }
+    100% { border-left: solid 1px #fff; }
+}
+
+.spin-hex {
+    width: 12rem;
+    height: 6.85rem;
+    background-color: #fff;
+    position: absolute;
+    z-index: 88;
+}
+
+.spin-hex::before,
+.spin-hex::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    /* background: #fff; */
+    position: absolute;
+    z-index: 88;
+}
+
+.spin-hex::before {
+    transform: rotate(60deg);
+}
+.spin-hex::after {
+    transform: rotate(-60deg);
+}
+
+.spin-hex,
+.spin-hex::before,
+.spin-hex::after {
+    background: transparent;
+}
+
+.spin-hex,
+.spin-hex::before,
+.spin-hex::after {
+    animation-delay: 2.4s;
+    animation-duration: 2.8s;
+    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    animation-iteration-count: 1;
+}
+
+.spin-hex::before,
+.spin-hex::after { 
+    animation-name: hex-spin-grow !important; 
+}
+
+@keyframes hex-spin-grow {
+    0% {
+        scale: 0.4;
+        border-left: solid 1px #fff;
+        border-right: solid 1px #fff;
+    }
+    70% {
+        scale: 0.95;
+        rotate: z 180deg;
+        border-left: solid 1px #fff;
+        border-right: solid 1px #fff;
+    }
+    100% {
+        border-left: solid 1px #fff;
+        border-right: solid 1px #fff;
+    }
+}

@@ -2,8 +2,8 @@
 .hexagon {
     width: 12rem;
     height: 6.85rem;
-    background-color: #fff;
     position: absolute;
+    z-index: 88;
 }
 
 .hexagon::before,
@@ -11,8 +11,8 @@
     content: "";
     width: 100%;
     height: 100%;
-    background: #fff;
     position: absolute;
+    z-index: 88;
 }
 
 .hexagon::before {
@@ -27,6 +27,7 @@
 .hexagon::before,
 .hexagon::after {
     background: transparent;
+    border: none;
     /* border-left: solid 1px #fff; */
     /* border-right: solid 1px #fff; */
 }
@@ -36,10 +37,10 @@
 .hexagon::before,
 .hexagon::after {
     animation-name: hexagon-flash;
-    animation-delay: 3s;
+    animation-delay: 2s;
     animation-duration: 0.15s;
     animation-timing-function: linear;
-    animation-iteration-count: 4;
+    animation-iteration-count: 2;
 }
 
 @keyframes hexagon-flash {

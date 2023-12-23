@@ -1,5 +1,7 @@
 @import "./Hexagon.css";
 @import "./Loading.css";
+@import "./StarIntoHex.css";
+@import "./Terminal.css";
 @import "./TerminalDot.css";
 @import "./Triangle.css";
 
@@ -23,13 +25,88 @@
     animation-duration: 2s;
     animation-timing-function: linear;
 
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
 }
+
 @keyframes establishing-wait {
     0% {
         color: transparent;
     }
+
     99% {
         color: transparent;
+    }
+}
+
+
+#scramble-1 {
+    position: absolute;
+    left: 32%;
+    bottom: 30%;
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+
+    font-weight: lighter;
+
+    animation-name: establishing-wait;
+    animation-duration: 2.6s;
+    animation-timing-function: linear;
+}
+
+#established-2 {
+    position: absolute;
+    color: transparent;
+    font-weight: lighter;
+
+    animation-name: established-flash;
+    animation-delay: 3s;
+    animation-duration: 1.4s;
+    animation-timing-function: linear;
+}
+@keyframes established-flash {
+    0% {
+        color: #fff;
+    }
+    5% {
+        color: transparent;
+    }
+    10% {
+        color: #fff;
+    }
+    90% {
+        color: #fff;
+    }
+}
+
+#retrieving {
+    position: absolute;
+    color: transparent;
+    font-weight: lighter;
+
+    animation-name: established-flash;
+    animation-delay: 10s;
+    animation-duration: 1.4s;
+    animation-timing-function: linear;
+}
+@keyframes established-flash {
+    0% {
+        color: #fff;
+    }
+    5% {
+        color: transparent;
+    }
+    10% {
+        color: #fff;
+    }
+    90% {
+        color: #fff;
     }
 }
 

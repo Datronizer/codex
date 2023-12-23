@@ -3,6 +3,7 @@
     height: 12rem;
     background: #fff;
     position: absolute;
+    z-index: 88;
 }
 
 .triangle::before,
@@ -12,13 +13,17 @@
     height: 100%;
     background: #fff;
     position: absolute;
+    z-index: 88;
 }
 
+.triangle {
+    transform:
+        translateY(21%);
+}
 .triangle::before {
     transform:
         rotate(30deg) translateX(-31.5%) translateY(-19%);
 }
-
 .triangle::after {
     transform:
         rotate(-30deg) translateX(31.5%) translateY(-19%);
@@ -37,10 +42,11 @@
     height: 7rem;
     background: transparent;
     position: absolute;
+    z-index: 88;
 
     border-radius: 4rem;
     /* border: solid 1px #fff; */
-    transform: translateY(-36%);
+    /* transform: translateY(-36%); */
 }
 
 

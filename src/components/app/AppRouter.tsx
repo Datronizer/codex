@@ -15,8 +15,9 @@ export function AppRouter()
     return (
         <HashRouter>
             <Routes>
-                <Route path="" element={<Home />} />
-                <Route path="home/test" element={<LoadingScreen />} />
+                <Route path="" element={<LoadingScreen />} />
+                <Route path="home" element={<Home />} />
+                <Route path="home/intro" element={<LoadingScreen />} />
                 {/* <Route path="/dashboard" element={<Dashboard />} /> */}
 
                 <Route path="hex" element={<HexViewer />} />
