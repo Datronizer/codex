@@ -41,3 +41,11 @@ export function formatShortDateRange(start: Date | string, end?: Date | string |
 
     return `${formatShortDate(start)} - ${formatShortDate(end)}`
 }
+
+export function getRandomChar(): string
+{
+    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#^&*()=<>/][\\";
+    const randomIndex = Math.floor(Math.random() * (77))
+
+    return chars[randomIndex]
+}

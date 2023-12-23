@@ -4,18 +4,27 @@ import { Container } from "react-bootstrap";
 import "./css/WatchDogs.css";
 import { Server } from "../../Server";
 import { IpLocationDto } from "./dtos/IpLocation.dto";
+import { getRandomChar } from "../../util";
 
 type P = {};
 type S = {
     userIp?: string;
     userLocation?: IpLocationDto;
+
+    jumbledText1: string;
 };
 export class LoadingScreen extends React.Component<P, S>
 {
     public constructor(props: P)
     {
         super(props);
-        this.state = { userIp: undefined, userLocation: undefined };
+        this.state = {
+            userIp: undefined,
+            userLocation: undefined,
+
+            jumbledText1: this.jumbleText("Establishing connection")
+            // jumbledText1: "Establishing connection"
+        };
     }
 
     public async componentDidMount(): Promise<void>
@@ -24,8 +33,10 @@ export class LoadingScreen extends React.Component<P, S>
             this.setState({
                 userIp: await Server.get("https://api.ipify.org?format=json").then(e => e.ip),
             }),
-            6000
+            100000 // please change back to 6000
         );
+
+        // setTimeout(() => this.unjumbledText("Establishing connection"), 6000)
     }
 
     private async getUserLocation(ip: string)
@@ -33,9 +44,88 @@ export class LoadingScreen extends React.Component<P, S>
         this.setState({ userLocation: await Server.get(`http://ip-api.com/json/${ip}`) });
     }
 
-    private jumbledText(text: string)
+    private jumbleText(text: string): string
     {
-        
+        return text
+            ? text.split("").map(() => getRandomChar()).join("")
+            : "Default string";
+    }
+
+    private unjumbledText(originalText: string): void
+    {
+        let iterations = 0;
+
+        const interval = setInterval(() =>
+        {
+            console.log(this.state.jumbledText1)
+            this.setState({
+                jumbledText1: this.state.jumbledText1.split("")
+                    .map((c, i) =>
+                    {
+                        if (i < originalText.length)
+                        {
+                            return originalText[i]
+                        }
+                        return getRandomChar()
+                    })
+                    .join("")
+            })
+
+            if (iterations >= originalText.length) { clearInterval(interval) }
+            iterations += 1;
+        },
+            250
+        )
+    }
+
+    private TextScrambler(props: { originalText: string }): JSX.Element | null
+    {
+        const originalText = props.originalText ?? this.state.jumbledText1
+        let text = "Establishing connection";
+        let iterations = 0;
+
+        const interval = setInterval(() =>
+        {
+            text.split("")
+                .map((c, i) => i < originalText.length
+                    ? originalText[i]
+                    : getRandomChar())
+                .join("")
+
+            if (iterations >= originalText.length) { clearInterval(interval) }
+            iterations += 1;
+        },
+            250
+        )
+
+        return (
+            <h1>{text}</h1>
+        )
+    }
+
+    private unscramble1(): void
+    {
+        const elt = document.getElementById("scramble-1")
+        if (!elt) { return; }
+
+        console.log(elt.innerText)
+        let originalText = "Establishing connection";
+
+        let iterations = 0;
+
+        const interval = setInterval(() =>
+        {
+            elt.innerText.split("")
+                .map((c, i) => i < originalText.length
+                    ? c = originalText[i]
+                    : c = getRandomChar())
+                .join("")
+
+            if (iterations >= originalText.length) { clearInterval(interval) }
+            iterations += 1;
+        },
+            250
+        )
     }
 
     public render(): React.ReactNode
@@ -63,7 +153,10 @@ export class LoadingScreen extends React.Component<P, S>
 
                     {/* >3s Fake search (6s) */}
                     <div className="establishing-container">
-                        <h1 className="loading">Establishing connection</h1>
+                        {/* <div onMouseOver={() => this.unjumbledText("Establishing connection")}> */}
+                        <h1 id="scramble-1" onMouseOver={() => this.unscramble1()}>Steam winter sale</h1>
+                        {/* <this.TextScrambler originalText="Establishing connection" /> */}
+                        {/* </div> */}
                     </div>
                 </div>
             );
@@ -115,13 +208,13 @@ export class LoadingScreen extends React.Component<P, S>
                 {/* Chien "TrueOnGod" Truong forms from jumbled text */}
 
 
-                {/* <div className="square-centered-container">
+                <div className="square-centered-container">
                     <div className="connection">
                         <h1>Connection established</h1>
                         <h1>{userIp}</h1>
                         <h1>{userLocation?.city}</h1>
                     </div>
-                </div> */}
+                </div>
 
                 {/* 0.6s hex flash () */}
                 <div className="hexagon" />
