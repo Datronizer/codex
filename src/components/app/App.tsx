@@ -1,9 +1,7 @@
 import React from 'react';
 
 import './App.css';
-import { AppNavBar } from './AppNavBar';
 import { AppRouter } from './AppRouter';
-import { Footer } from './Footer';
 
 type AppProps = {};
 type AppState = {};
