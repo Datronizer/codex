@@ -37,7 +37,7 @@
 .hexagon::before,
 .hexagon::after {
     animation-name: hexagon-flash;
-    animation-delay: 2s;
+    animation-delay: calc(2s + 0s);
     animation-duration: 0.15s;
     animation-timing-function: linear;
     animation-iteration-count: 2;

@@ -15,7 +15,7 @@
     opacity: 0%;
 
     animation-name: flash;
-    animation-delay: 6s;
+    animation-delay: calc(6s + 0s);;
     animation-duration: 5s;
     animation-timing-function: linear;
     animation-iteration-count: 1;

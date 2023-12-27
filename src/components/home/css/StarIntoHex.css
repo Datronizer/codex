@@ -30,7 +30,7 @@
 .star::before,
 .star::after{
     animation-name: star-flash;
-    animation-delay: 2.1s;
+    animation-delay: calc(2.1s + 0s);
     animation-duration: 0.3s;
     animation-timing-function: linear;
     animation-iteration-count: 1;
@@ -80,7 +80,7 @@
 .spin-hex,
 .spin-hex::before,
 .spin-hex::after {
-    animation-delay: 2.4s;
+    animation-delay: calc(2.4s + 0s);
     animation-duration: 2.8s;
     animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
     animation-iteration-count: 1;

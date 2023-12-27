@@ -9,7 +9,7 @@ import { getRandomChar } from "../../util";
 type P = {};
 type S = {
     userIp?: string;
-    userLocation?: IpLocationDto;
+    userLocation?: any;
 
     jumbledText1: string;
 };
@@ -31,15 +31,20 @@ export class LoadingScreen extends React.Component<P, S>
         setTimeout(async () =>
             this.setState({
                 userIp: await Server.get("https://api.ipify.org?format=json").then(e => e.ip),
-                userLocation: await Server.get(`https://ip-api.com/json/`).then(e => IpLocationDto.from(e))
+                userLocation: await Server.getWithQuery(
+                    `https://api.ipgeolocation.io/ipgeo`,
+                    {
+                        apiKey: process.env.REACT_APP_GEOLOCATION_API_KEY,
+                    }
+                )
+                // .then(e => IpLocationDto.from(e))
             }),
-            8000 // please change back to 6000
+            8000 + 3000 // please change back to 6000
         );
 
-        setTimeout(() => this.buildText(this.state.jumbledText1), 2500);
-        setTimeout(() => this.unscramble("Establishing connection"), 4500);
-
-        setTimeout(() => window.location.hash = "/home", 12500 + 8000);
+        setTimeout(() => this.buildText(this.state.jumbledText1), 2500 + 3000);
+        setTimeout(() => this.unscramble("Establishing connection"), 4500 + 3000);
+        setTimeout(() => window.location.hash = "/home", 12500 + 8000 + 5000 + 3000); // Seq2 duration + seq1 + dampener + epilepsy warning
     }
 
     private scramble(text: string): string
@@ -99,6 +104,9 @@ export class LoadingScreen extends React.Component<P, S>
         {
             return (
                 <div className="main-container">
+                    <div className="epilepsy-warning">
+                        <b>WARNING:</b> This animation may potentially trigger seizures for people with photosensitive epilepsy. Viewer discretion is advised.
+                    </div>
                     {/* 0.6s dot flash x2 (1.2s) */}
                     <div className="terminal-dot sequence-1" />
 
@@ -106,10 +114,7 @@ export class LoadingScreen extends React.Component<P, S>
                     <div className="triangle" />
                     <div className="circle" />
 
-
-                    {/* Establishing \n Connection 1s , no loading ellipses,
-                    Do the WatchDogs white bars covering the text (look up Inintializing)
-                    */}
+                    {/* Jumbled text comes in and looks cool */}
                     <h3 id="scramble-1">{this.state.jumbledText1}</h3>
                 </div>
             );
@@ -118,12 +123,12 @@ export class LoadingScreen extends React.Component<P, S>
         const sentences: { header: string, content: string; }[] = [
             { header: `ExtAccessLogger -- Validating`, content: "" },
             { header: ``, content: "" },
-            { header: `Accessing from: `, content: `${userLocation.city} ${userLocation.region}, ${userLocation.country}` },
+            { header: `Accessing from: `, content: `${userLocation.city} ${userLocation.state_prov}, ${userLocation.country_name}` },
             { header: `IPv4: `, content: `${userIp}` },
-            { header: `ISP: `, content: `${userLocation.org}` },
+            { header: `ISP: `, content: `${userLocation.organization}` },
             { header: ``, content: "" },
-            { header: `Latitude: `, content: `${userLocation.lat}` },
-            { header: `Longitude: `, content: `${userLocation.lon}` },
+            { header: `Latitude: `, content: `${userLocation.latitude}` },
+            { header: `Longitude: `, content: `${userLocation.longitude}` },
             { header: ``, content: "" },
             { header: `ExtAccessLogger -- Validated!`, content: "" },
             { header: `ExtAccessLogger -- Exiting`, content: "" },
@@ -141,7 +146,6 @@ export class LoadingScreen extends React.Component<P, S>
 
                 {/* 2 terminal dot flashes */}
                 <div className="terminal-dot sequence-2" />
-
 
                 {/* Make fake animated terminal screen with user data */}
                 {/* When terminal done, immiediately goes away */}
@@ -167,16 +171,7 @@ export class LoadingScreen extends React.Component<P, S>
                 {/* "Retrieving profile" */}
                 <h3 id="retrieving">### Retrieving profile ###</h3>
 
-                {/* Now render home page */}
-
-                {/* 
-                    Refer to this for home page reference
-                    https://interfaceingame.com/screenshots/watch-dogs-2-main-menu/ 
-
-                    For background art, 
-                */}
-                {/* Chien "TrueOnGod" Truong forms from jumbled text */}
-
+                {/* Now redirect to home page */}
                 {/* 0.6s hex flash () */}
                 <div className="hexagon" />
             </div>

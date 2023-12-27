@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/Home.css";
+import "./css/Home.css";
 import { Server } from "../../Server";
 import
 {
@@ -58,67 +58,64 @@ export class Home extends React.Component<P, S>
         const game = data.activities.filter(e => e.name !== "Spotify")[0] ?? undefined;
 
         return (
-            <div id="container">
-                <img src="https://free4kwallpapers.com/uploads/originals/2021/03/02/sunset-at-the-ocean-wallpaper.jpg" className="banner" alt="Temporary Background" />
-                <section id="overlay">
-                    <Card style={{ backgroundColor: "#23272a" }}>
-                        <Card.Body className="discord-box">
-                            <Row>
-                                <Col style={{ maxWidth: "fit-content" }}>
-                                    <img
-                                        alt="Discord avatar"
-                                        className="discord-avatar"
-                                        src={`${CDN}/avatars/${data.discord_user?.id}/${data.discord_user?.avatar}`}
-                                    />
-                                </Col>
-                                <Col className="username">
-                                    <b>{data.discord_user?.global_name}</b>
-                                </Col>
-                                <Col className="button-container">
-                                    <div>
-                                        <button
-                                            className="view-profile"
-                                            onClick={() => window.location.href = `https://discord.com/users/${DISCORD_ID}`}
-                                        >
-                                            View Profile
-                                        </button>
-                                    </div>
-                                </Col>
-                            </Row>
-                            {
-                                data.spotify || game
-                                    ? <>
-                                        <hr style={{ border: "0.1rem solid lightgray" }} />
-                                        <Row>
-                                            <Col>
-                                                {
-                                                    data.spotify && game
-                                                        ? <>
-                                                            <SpotifyCard spotify={data.spotify} />
-                                                            <hr style={{ border: "0.1rem solid lightgray" }} />
-                                                            <GameCard activity={data.activities.filter(e => e.name !== "Spotify")[0]} />
-                                                        </>
-                                                        : data.spotify
-                                                            ? <SpotifyCard spotify={data.spotify} />
-                                                            : <GameCard activity={data.activities.filter(e => e.name !== "Spotify")[0]} />
-                                                }
+            <div className="main-container">
+                <Card style={{ backgroundColor: "#23272a" }}>
+                    <Card.Body className="discord-box">
+                        <Row>
+                            <Col style={{ maxWidth: "fit-content" }}>
+                                <img
+                                    alt="Discord avatar"
+                                    className="discord-avatar"
+                                    src={`${CDN}/avatars/${data.discord_user?.id}/${data.discord_user?.avatar}`}
+                                />
+                            </Col>
+                            <Col className="username">
+                                <b>{data.discord_user?.global_name}</b>
+                            </Col>
+                            <Col className="button-container">
+                                <div>
+                                    <button
+                                        className="view-profile"
+                                        onClick={() => window.location.href = `https://discord.com/users/${DISCORD_ID}`}
+                                    >
+                                        View Profile
+                                    </button>
+                                </div>
+                            </Col>
+                        </Row>
+                        {
+                            data.spotify || game
+                                ? <>
+                                    <hr style={{ border: "0.1rem solid lightgray" }} />
+                                    <Row>
+                                        <Col>
+                                            {
+                                                data.spotify && game
+                                                    ? <>
+                                                        <SpotifyCard spotify={data.spotify} />
+                                                        <hr style={{ border: "0.1rem solid lightgray" }} />
+                                                        <GameCard activity={data.activities.filter(e => e.name !== "Spotify")[0]} />
+                                                    </>
+                                                    : data.spotify
+                                                        ? <SpotifyCard spotify={data.spotify} />
+                                                        : <GameCard activity={data.activities.filter(e => e.name !== "Spotify")[0]} />
+                                            }
 
-                                            </Col>
-                                        </Row>
-                                    </>
-                                    : <div className="activities">Hmm... Looks like Chien isn't doing anything at the moment</div>
-                            }
-                        </Card.Body>
-                    </Card>
-                    <br />
-                    <Card style={{ backgroundColor: "#23272a" }}>
-                        <Card.Body className="" style={{ color: "white" }}>
-                            <Row>
-                                Blog goes here
-                            </Row>
-                        </Card.Body>
-                    </Card>
-                </section>
+                                        </Col>
+                                    </Row>
+                                </>
+                                : <div className="activities">Hmm... Looks like Chien isn't doing anything at the moment</div>
+                        }
+                    </Card.Body>
+                </Card>
+                <br />
+                <Card style={{ backgroundColor: "#23272a" }}>
+                    <Card.Body className="" style={{ color: "white" }}>
+                        <Row>
+                            Blog goes here
+                        </Row>
+                    </Card.Body>
+                </Card>
             </div>
         );
     }

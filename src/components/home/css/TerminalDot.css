@@ -18,10 +18,10 @@
 }
 
 .sequence-1 {
-    animation-delay: 0s;
+    animation-delay: calc(0s + 3s);
 }
 .sequence-2 {
-    animation-delay: 4.2s;
+    animation-delay: calc(4.2s + 0s);
 }
 
 @keyframes dot-flash {

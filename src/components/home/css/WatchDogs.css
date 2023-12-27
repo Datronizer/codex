@@ -1,5 +1,4 @@
 @import "./Hexagon.css";
-@import "./Loading.css";
 @import "./StarIntoHex.css";
 @import "./Terminal.css";
 @import "./TerminalDot.css";
@@ -40,12 +39,22 @@
     }
 }
 
+.epilepsy-warning {
+    color: transparent;
+    animation: fade-in-and-out 3s linear 0s 1;
+}
+@keyframes fade-in-and-out {
+    0% { color: #fff }
+    80% { color: #fff }
+    90% { color: transparent }
+}
 
 #scramble-1 {
     position: absolute;
     left: 32%;
     bottom: 30%;
     margin: 0;
+    color: transparent;
 
     display: flex;
     align-items: center;
@@ -55,9 +64,14 @@
 
     font-weight: lighter;
 
-    animation-name: establishing-wait;
-    animation-duration: 2.6s;
+    animation-delay: calc(2.7s + 3s);
+    animation-name: scramble;
+    animation-duration: 15s;
     animation-timing-function: linear;
+}
+@keyframes scramble {
+    from { color: #fff; }
+    to { color: #fff; }
 }
 
 #established-2 {
@@ -66,7 +80,7 @@
     font-weight: lighter;
 
     animation-name: established-flash;
-    animation-delay: 3s;
+    animation-delay: calc(3s + 0s);
     animation-duration: 1.4s;
     animation-timing-function: linear;
 }
@@ -90,24 +104,16 @@
     color: transparent;
     font-weight: lighter;
 
-    animation-name: established-flash;
-    animation-delay: 10s;
-    animation-duration: 1.4s;
+    animation-name: retrieving;
+    animation-delay: calc(10s + 3s);
+    animation-duration: 5s;
     animation-timing-function: linear;
 }
-@keyframes established-flash {
-    0% {
-        color: #fff;
-    }
-    5% {
-        color: transparent;
-    }
-    10% {
-        color: #fff;
-    }
-    90% {
-        color: #fff;
-    }
+@keyframes retrieving {
+    0% { color: #fff; }
+    1% { color: transparent; }
+    2% { color: #fff; }
+    90% { color: #fff; }
 }
 
 .square-centered-container {
