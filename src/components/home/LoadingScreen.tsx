@@ -37,7 +37,7 @@ export class LoadingScreen extends React.Component<P, S>
                         apiKey: process.env.REACT_APP_GEOLOCATION_API_KEY,
                     }
                 )
-                // .then(e => IpLocationDto.from(e))
+                .then(e => IpLocationDto.from(e))
             }),
             8000 + 3000 // please change back to 6000
         );

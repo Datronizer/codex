@@ -1,7 +1,9 @@
 .App {
-  /* text-align: center; */
-  /* background-image: url("https://cdnb.artstation.com/p/assets/images/images/049/410/861/large/chien-truong-quoc-final.jpg?1652426905");
-  background-size: contain; */
+  height: 100%;
+  background-color: #000;
+  color: #fff;
+
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .App-logo {
