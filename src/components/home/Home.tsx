@@ -58,8 +58,18 @@ export class Home extends React.Component<P, S>
         const game = data.activities.filter(e => e.name !== "Spotify")[0] ?? undefined;
 
         return (
-            <div className="main-container">
-                <Card style={{ backgroundColor: "#23272a" }}>
+            <div className="home-container">
+                {/* <div className="" */}
+                <div className="menu-container">
+                    <ul className="menu">
+                        <li><a href={`${process.env.PUBLIC_URL}/#/resume`}>Resume</a></li>
+                        <li><a href={`${process.env.PUBLIC_URL}/#/about/site`}>Blog</a></li>
+                        <li><a href={`${process.env.PUBLIC_URL}/#/hex`}>Projects</a></li>
+                        <li><a href={`${process.env.PUBLIC_URL}/#/about`}>About</a></li>
+                        <li ><a href={`${process.env.PUBLIC_URL}/#/home/intro`}>Rewatch intro</a></li >
+                    </ul>
+                </div>
+                {/* <Card style={{ backgroundColor: "#23272a" }}>
                     <Card.Body className="discord-box">
                         <Row>
                             <Col style={{ maxWidth: "fit-content" }}>
@@ -115,7 +125,7 @@ export class Home extends React.Component<P, S>
                             Blog goes here
                         </Row>
                     </Card.Body>
-                </Card>
+                </Card> */}
             </div>
         );
     }
