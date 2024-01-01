@@ -30,7 +30,7 @@ export class LoadingScreen extends React.Component<P, S>
     {
         setTimeout(async () =>
             this.setState({
-                userIp: await Server.get("https://api.ipify.org?format=json").then(e => e.ip),
+                userIp: await Server.get("https://api.ipify.org?format=json", true).then(e => e.ip),
                 userLocation: await Server.getWithQuery(
                     `https://api.ipgeolocation.io/ipgeo`,
                     {
