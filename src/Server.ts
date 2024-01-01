@@ -2,7 +2,7 @@ export class Server
 {
     public static async get(path: string, external?: boolean): Promise<any>
     {
-        const url = external ? process.env.REACT_APP_TRUEONGOD_URL + path : path;
+        const url = !external ? process.env.REACT_APP_TRUEONGOD_URL + path : path;
         const res = await fetch(url, {
             method: "GET",
             headers: {

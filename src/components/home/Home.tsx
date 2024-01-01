@@ -28,7 +28,6 @@ export class Home extends React.Component<P, S>
     public async componentDidMount(): Promise<void>
     {
         this.getLanyard();
-        console.log(await Server.get("https://true-on-god-app-4a3a7775b9ce.herokuapp.com"))
         this.setState({ interval: setInterval(async () => await this.getLanyard(), 1000 * 30) });
     }
 
@@ -40,7 +39,7 @@ export class Home extends React.Component<P, S>
 
     async getLanyard(): Promise<void>
     {
-        const lanyard: LanyardRoot = await Server.get("http://localhost:3000/lanyard");
+        const lanyard: LanyardRoot = await Server.get("/lanyard/");
         const lanyardData: LanyardData = lanyard.data;
 
         this.setState({ lanyardData });
