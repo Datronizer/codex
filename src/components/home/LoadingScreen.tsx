@@ -9,7 +9,7 @@ import { getRandomChar } from "../../util";
 type P = {};
 type S = {
     userIp?: string;
-    userLocation?: any;
+    userLocation?: IpLocationDto;
 
     jumbledText1: string;
 };
@@ -31,13 +31,7 @@ export class LoadingScreen extends React.Component<P, S>
         setTimeout(async () =>
             this.setState({
                 userIp: await Server.get("https://api.ipify.org?format=json", true).then(e => e.ip),
-                userLocation: await Server.getWithQuery(
-                    `https://api.ipgeolocation.io/ipgeo`,
-                    {
-                        apiKey: process.env.REACT_APP_GEOLOCATION_API_KEY,
-                    }
-                )
-                .then(e => IpLocationDto.from(e))
+                userLocation: await Server.get(`/external/ip-geolocation/${this.state.userIp}`)
             }),
             8000 + 3000 // please change back to 6000
         );
