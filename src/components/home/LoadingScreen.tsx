@@ -128,6 +128,8 @@ export class LoadingScreen extends React.Component<P, S>
             { header: `ExtAccessLogger -- Exiting`, content: "" },
         ];
 
+        console.log(userLocation);
+
         return (
             <div className="main-container">
                 <div className="star" />

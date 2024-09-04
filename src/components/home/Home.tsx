@@ -39,7 +39,7 @@ export class Home extends React.Component<P, S>
 
     async getLanyard(): Promise<void>
     {
-        const lanyard: LanyardRoot = await Server.get("/lanyard/");
+        const lanyard: LanyardRoot = await Server.get("/external/lanyard/");
         const lanyardData: LanyardData = lanyard.data;
 
         this.setState({ lanyardData });
