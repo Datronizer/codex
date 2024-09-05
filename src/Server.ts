@@ -31,7 +31,5 @@ export class Server
         });
         const json = res.json().catch(() => undefined);
         return json;
-
-        // https://api.ipgeolocation.io/ipgeo
     }
 }

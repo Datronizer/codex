@@ -1,7 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 
-import "./css/loading-anim/WatchDogs.css";
 import { Server } from "../../Server";
 import { IpLocationDto } from "./dtos/IpLocation.dto";
 import { getRandomChar } from "../../util";

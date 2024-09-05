@@ -1,5 +1,4 @@
 import React from "react";
-import "./css/Home.scss";
 import { Server } from "../../Server";
 import
 {

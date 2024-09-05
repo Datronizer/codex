@@ -9,13 +9,15 @@ import { Writing } from "../resume/Writing";
 import { AboutSite } from "../resume/AboutSite";
 import { Resume } from "../resume/Resume";
 import { LoadingScreen } from "../home/LoadingScreen";
+import { NewHome } from "../home/NewHome";
 
 export function AppRouter()
 {
     return (
         <HashRouter>
             <Routes>
-                <Route path="" element={<LoadingScreen />} />
+                <Route path="" element={<NewHome />} />
+                {/* <Route path="" element={<LoadingScreen />} /> */}
                 <Route path="home" element={<Home />} />
                 <Route path="home/intro" element={<LoadingScreen />} />
                 {/* <Route path="/dashboard" element={<Dashboard />} /> */}

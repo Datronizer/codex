@@ -34,7 +34,8 @@
     "start": "set PORT=4400 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-css": "sass ./src/stylesheets/scss/index.scss ./src/stylesheets/css/index.css"
   },
   "eslintConfig": {
     "extends": [
