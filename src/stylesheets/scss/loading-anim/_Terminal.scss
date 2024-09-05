@@ -1,0 +1,57 @@
+.terminal {
+    background-color: #000 !important;
+    color: #fff !important;
+
+    font-family: 'Courier New', Courier, monospace;
+
+    border-radius: 0 !important;
+    border-style: groove !important;
+    border: solid 0.2rem #fff !important;
+
+    height: 60vh !important;
+    width: 60vh !important;
+
+    visibility: visible;
+    opacity: 0%;
+
+    animation-name: flash;
+    animation-delay: calc(6s + 0s);;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
+
+.terminal-card-header {
+    background-color: #fff !important;
+    color: #000 !important;
+    font-weight: bold !important;
+    font-size: larger !important;
+
+    padding: 0.2rem 0.6rem !important;
+    border-radius: 0 !important;
+}
+
+.terminal-line {
+    list-style: "> ";
+    margin: 0;
+}
+
+.terminal-header {
+    color: gray;
+    display: inline;
+}
+.terminal-content {
+    display: inline;
+}
+
+@keyframes flash {
+    0% { opacity: 0%; }
+    1% { opacity: 100%; }
+    2% { opacity: 0%; }
+    3% { opacity: 100%; }
+    4% { opacity: 0%; }
+    5% { opacity: 100%; }
+    70% { opacity: 100%; }
+    80% { opacity: 0%; }
+    100% { opacity: 0%; }
+}
