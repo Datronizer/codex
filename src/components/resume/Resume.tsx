@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import resume from "./json/chiens-resume-nov-23.json"; // Replace this with proper back-end information
+import resume from "./json/siennas-resume-nov-23.json"; // Replace this with proper back-end information
 import { EducationDto } from "./dtos/Education.dto";
 import { formatShortDateRange } from "../../util";
 import { WorkDto } from "./dtos/Work.dto";

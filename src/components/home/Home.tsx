@@ -3,52 +3,39 @@ import { Spotify, Activity, LanyardResponse, LanyardData } from "./dtos/LanyardT
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+
 const CDN = "https://cdn.discordapp.com/";
+const URL = `https://api.lanyard.rest/v1/users/${process.env.REACT_APP_DISCORD_ID}`;
 
 
 export function Home()
 {
-    const [lanyard, setLanyard] = useState(undefined);
+    const [lanyard, setLanyard] = useState<LanyardData>();
 
     useEffect(() =>
     {
-        const getLanyard = setInterval(async () =>
+        const intervalId = setInterval(() =>
         {
-            try 
-            {
-                const { data: response } = await axios.get(`${process.env.REACT_APP_LANYARD_URL}/${process.env.REACT_APP_DISCORD_ID}`)
-                console.log(response.data);
-                setLanyard(response.data)
-            }
-            catch (error)
-            {
-                console.error(error);
-            }
-        }, 10000)
 
-        return clearInterval(getLanyard);
-    }, [])
+            axios.get<LanyardResponse>(URL)
+                .then(e => setLanyard(e.data.data))
+                .catch(err => console.error(err));
+        }, 5000);
 
-    if (!lanyard)
-    {
-        return null;
-    }
-
-    const lanyardData: LanyardData = lanyard;
-    const game = lanyardData.activities.filter(e => e.name !== "Spotify")[0] ?? undefined;
-
+        return () => clearInterval(intervalId);
+    }, [lanyard]);
 
     return (
         <div className="home-container">
             <div className="home-grid">
                 <div className="">
-
+                    a
                 </div>
             </div>
-            <div className="name-container">
-                <div className="name-glitch">CHIEN TRUONG </div>
-                <div className="name-glow">CHIEN TRUONG </div>
-            </div>
+            {/* <div className="name-container">
+                <div className="name-glitch">SIENNA TRUONG </div>
+                <div className="name-glow">SIENNA TRUONG </div>
+            </div> */}
             <div className="menu-container">
                 <ul className="menu">
                     <li><a href={`${process.env.PUBLIC_URL}/#/resume`}>Résumé</a></li>
@@ -60,55 +47,7 @@ export function Home()
             </div>
 
             <div style={{ position: "absolute" }}>
-                <Card style={{ backgroundColor: "#23272a" }}>
-                    <Card.Body className="discord-box">
-                        <Row>
-                            <Col style={{ maxWidth: "fit-content" }}>
-                                <img
-                                    alt="Discord avatar"
-                                    className="discord-avatar"
-                                    src={`${CDN}/avatars/${lanyardData.discord_user?.id}/${lanyardData.discord_user?.avatar}`}
-                                />
-                            </Col>
-                            <Col className="username">
-                                <b>{lanyardData.discord_user?.global_name}</b>
-                            </Col>
-                            <Col className="button-container">
-                                <div>
-                                    <button
-                                        className="view-profile"
-                                        onClick={() => window.location.href = `https://discord.com/users/${process.env.REACT_APP_DISCORD_ID}`}
-                                    >
-                                        View Profile
-                                    </button>
-                                </div>
-                            </Col>
-                        </Row>
-                        {
-                            lanyardData.spotify || game
-                                ? <>
-                                    <hr style={{ border: "0.1rem solid lightgray" }} />
-                                    <Row>
-                                        <Col>
-                                            {
-                                                lanyardData.spotify && game
-                                                    ? <>
-                                                        <SpotifyCard spotify={lanyardData.spotify} />
-                                                        <hr style={{ border: "0.1rem solid lightgray" }} />
-                                                        <GameCard activity={lanyardData.activities.filter(e => e.name !== "Spotify")[0]} />
-                                                    </>
-                                                    : lanyardData.spotify
-                                                        ? <SpotifyCard spotify={lanyardData.spotify} />
-                                                        : <GameCard activity={lanyardData.activities.filter(e => e.name !== "Spotify")[0]} />
-                                            }
-
-                                        </Col>
-                                    </Row>
-                                </>
-                                : <div className="activities">Hmm... Looks like Sienna isn't doing anything at the moment</div>
-                        }
-                    </Card.Body>
-                </Card>
+                <DiscordBox lanyardData={lanyard} />
                 <br />
                 <Card style={{ backgroundColor: "#23272a" }}>
                     <Card.Body className="" style={{ color: "white" }}>
@@ -122,6 +61,73 @@ export function Home()
     );
 }
 
+function DiscordBox({ lanyardData }: { lanyardData?: LanyardData; }): JSX.Element
+{
+    if (!lanyardData)
+    {
+        return (
+            <Card style={{ backgroundColor: "#23272a" }}>
+                <Card.Body className="discord-box">
+                    Please wait... Loading Sienna's data
+                </Card.Body>
+            </Card>
+        );
+    }
+
+    const game = lanyardData.activities.filter(e => e.name !== "Spotify")[0] ?? undefined;
+
+    return (
+        <Card style={{ backgroundColor: "#23272a" }}>
+            <Card.Body className="discord-box">
+                <Row>
+                    <Col style={{ maxWidth: "fit-content" }}>
+                        <img
+                            alt="Discord avatar"
+                            className="discord-avatar"
+                            src={`${CDN}/avatars/${lanyardData.discord_user?.id}/${lanyardData.discord_user?.avatar}`}
+                        />
+                    </Col>
+                    <Col className="username">
+                        <b>{lanyardData.discord_user?.global_name}</b>
+                    </Col>
+                    <Col className="button-container">
+                        <div>
+                            <button
+                                className="view-profile"
+                                onClick={() => window.location.href = `https://discord.com/users/${process.env.REACT_APP_DISCORD_ID}`}
+                            >
+                                View Profile
+                            </button>
+                        </div>
+                    </Col>
+                </Row>
+                {
+                    lanyardData.spotify || game
+                        ? <>
+                            <hr style={{ border: "0.1rem solid lightgray" }} />
+                            <Row>
+                                <Col>
+                                    {
+                                        lanyardData.spotify && game
+                                            ? <>
+                                                <SpotifyCard spotify={lanyardData.spotify} />
+                                                <hr style={{ border: "0.1rem solid lightgray" }} />
+                                                <GameCard activity={lanyardData.activities.filter(e => e.name !== "Spotify")[0]} />
+                                            </>
+                                            : lanyardData.spotify
+                                                ? <SpotifyCard spotify={lanyardData.spotify} />
+                                                : <GameCard activity={lanyardData.activities.filter(e => e.name !== "Spotify")[0]} />
+                                    }
+
+                                </Col>
+                            </Row>
+                        </>
+                        : <div className="activities">Hmm... Looks like Sienna isn't doing anything at the moment</div>
+                }
+            </Card.Body>
+        </Card>
+    );
+}
 
 function GameCard(props: { activity?: Activity; }): JSX.Element | null
 {

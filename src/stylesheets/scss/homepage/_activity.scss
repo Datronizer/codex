@@ -21,6 +21,7 @@
     display: grid;
     grid-template-areas: "discord-avatar" "username" "view-profile";
     grid-template-columns: 1fr 3fr 2fr;
+    color: white;
 }
 
 .discord-avatar {
