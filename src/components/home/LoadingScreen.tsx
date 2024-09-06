@@ -1,9 +1,8 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-
-import { Server } from "../../Server";
 import { IpLocationDto } from "./dtos/IpLocation.dto";
 import { getRandomChar } from "../../util";
+import axios from "axios";
 
 type P = {};
 type S = {
@@ -27,10 +26,19 @@ export class LoadingScreen extends React.Component<P, S>
 
     public async componentDidMount(): Promise<void>
     {
+        await axios.get("https://api.ipgeolocation.io/ipgeo", {
+            params: {
+                apiKey: process.env.REACT_APP_IPGEOLOCATION_API_KEY
+            }
+        }).then(e => console.log(e.data)).catch(err => console.log(err))
+
         setTimeout(async () =>
             this.setState({
-                userIp: await Server.get("https://api.ipify.org?format=json", true).then(e => e.ip),
-                userLocation: await Server.get(`/external/ip-geolocation/${this.state.userIp}`)
+                userLocation: await axios.get("https://api.ipgeolocation.io/ipgeo", {
+                    params: {
+                        apiKey: process.env.REACT_APP_IPGEOLOCATION_API_KEY
+                    }
+                })
             }),
             8000 + 3000 // please change back to 6000
         );

@@ -1,8 +1,8 @@
-@import "./Hexagon.css";
-@import "./StarIntoHex.css";
-@import "./Terminal.css";
-@import "./TerminalDot.css";
-@import "./Triangle.css";
+@use "Hexagon";
+@use "StarIntoHex";
+@use "Terminal";
+@use "TerminalDot";
+@use "Triangle";
 
 .main-container {
     background-color: black;

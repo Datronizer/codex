@@ -7,13 +7,6 @@ const CDN = "https://cdn.discordapp.com/";
 export function Home()
 {
     const lanyardData = useLanyard({ userId: process.env.REACT_APP_DISCORD_ID! }).data?.data;
-    // const [lanyardData, setLanyardData] = useState<LanyardData>();
-    // const interval: NodeJS.Timer = setInterval(
-    //     async () => {
-    //         const lanyardRoot = useLanyard({ userId: process.env.REACT_APP_DISCORD_ID! }).data;
-    //         setLanyardData(lanyardRoot!.data)
-    //     }
-    //     , 1000 * 30);
 
     if (!lanyardData)
     {
@@ -90,7 +83,7 @@ export function Home()
                                         </Col>
                                     </Row>
                                 </>
-                                : <div className="activities">Hmm... Looks like Chien isn't doing anything at the moment</div>
+                                : <div className="activities">Hmm... Looks like Sienna isn't doing anything at the moment</div>
                         }
                     </Card.Body>
                 </Card>

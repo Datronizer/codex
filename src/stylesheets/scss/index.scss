@@ -1,16 +1,28 @@
-
-
-
 // Import complete stylesheets
 // Pages
-@import "App";
-@import "Home";
-@import "Footer";
-@import "./newHomepage/NewHomepage.scss";
+@use "App";
+@use "Home";
+@use "Footer";
+@use "newHomepage/NewHomepage";
 
 // Components
-@import "./loading-anim/WatchDogs.scss";
-@import "./homepage/activity.scss";
+@use "homepage/activity";
 
 // Animations
-@import "./homepage/glitch.scss"; 
+@use "homepage/glitch";
+@use "loading-anim/WatchDogs";
+
+// The rest
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}   
