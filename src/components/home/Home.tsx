@@ -1,18 +1,40 @@
 import { Card, Col, Row } from "react-bootstrap";
-import { Activity, Spotify, useLanyard } from "react-use-lanyard";
+import { Spotify, Activity, LanyardResponse, LanyardData } from "./dtos/LanyardTypes";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const CDN = "https://cdn.discordapp.com/";
 
 
 export function Home()
 {
-    const lanyardData = useLanyard({ userId: process.env.REACT_APP_DISCORD_ID! }).data?.data;
+    const [lanyard, setLanyard] = useState(undefined);
 
-    if (!lanyardData)
+    useEffect(() =>
+    {
+        const getLanyard = setInterval(async () =>
+        {
+            try 
+            {
+                const { data: response } = await axios.get(`${process.env.REACT_APP_LANYARD_URL}/${process.env.REACT_APP_DISCORD_ID}`)
+                console.log(response.data);
+                setLanyard(response.data)
+            }
+            catch (error)
+            {
+                console.error(error);
+            }
+        }, 10000)
+
+        return clearInterval(getLanyard);
+    }, [])
+
+    if (!lanyard)
     {
         return null;
     }
 
+    const lanyardData: LanyardData = lanyard;
     const game = lanyardData.activities.filter(e => e.name !== "Spotify")[0] ?? undefined;
 
 

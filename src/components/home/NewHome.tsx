@@ -1,15 +1,5 @@
 import React from "react";
-import { Server } from "../../Server";
-import
-{
-    Root as LanyardRoot,
-    Data as LanyardData,
-    Activity as LanyardActivity,
-    Spotify as LanyardSpotify
-} from "./dtos/LanyardTypes";
-import { Card, Col, Row } from "react-bootstrap";
 
-const CDN = "https://cdn.discordapp.com/";
 
 type P = {};
 type S = {
