@@ -6,7 +6,7 @@ export function AboutMe()
         <Container>
             <h1>Who am I?</h1>
             <p>
-                Hello, world! My name is Chien Truong. I am a first year student at Sheridan College,
+                Hello, world! My name is Sienna Truong. I am a second year student at Sheridan College,
                 enrolled in the Software Development & Network Engineering program.
             </p>
             <p>

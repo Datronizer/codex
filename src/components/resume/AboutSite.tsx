@@ -6,7 +6,7 @@ export function AboutSite()
         <Container>
             <p>
                 {/* Tell the guest what this site does and what languages/frameworks it uses. */}
-                This website serves as a portfolio for Chien "TrueOnGod" Truong. Here you can find my web development
+                This website serves as a portfolio for Sienna "TrueOnGod" Truong. Here you can find my web development
                 stuff, literary works, 3D artworks, photography, and other stuff I have done. Enjoy your stay!
 
                 <strong>True, On God</strong> came from a harmless joke by one of my best friends.

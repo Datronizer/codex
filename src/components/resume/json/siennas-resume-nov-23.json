@@ -25,6 +25,20 @@
     ],
     "work": [
         {
+            "title": "HAHAHAHAHAHA",
+            "workplace": "University of South Florida",
+            "division": "Institute of Applied Engineering",
+            "location": "Brampton, ON",
+            "start": "2021-05-01",
+            "end": "2021-08-31",
+            "duties": [
+                "Researched the nature of social affordance and discussed the possibility of integrating into artificial agents.",
+                "Singlehandedly integrated literature on the task-understanding, object-oriented neural network, FOON, and video game modeling into final version of white paper",
+                "Coordinated with other researchers on the team for interdisciplinary literature review and integration of findings into proposal submission documents.",
+                "Took charge of editing the white paper and full proposal in English, ensuring that everything follows submission guidelines to MURI and AFRL"
+            ]
+        },
+        {
             "title": "Junior Software Developer",
             "workplace": "uYeti Entertainment",
             "division": null,

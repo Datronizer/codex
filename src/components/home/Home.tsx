@@ -3,6 +3,7 @@ import { Spotify, Activity, LanyardResponse, LanyardData } from "./dtos/LanyardT
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+import startButton from  "../../assets/win98-start-button.png";
 
 const CDN = "https://cdn.discordapp.com/";
 const URL = `https://api.lanyard.rest/v1/users/${process.env.REACT_APP_DISCORD_ID}`;
@@ -27,16 +28,7 @@ export function Home()
 
     return (
         <div className="home-container">
-            <div className="home-grid">
-                <div className="">
-                    a
-                </div>
-            </div>
-            {/* <div className="name-container">
-                <div className="name-glitch">SIENNA TRUONG </div>
-                <div className="name-glow">SIENNA TRUONG </div>
-            </div> */}
-            <div className="menu-container">
+            {/* <div className="menu-container">
                 <ul className="menu">
                     <li><a href={`${process.env.PUBLIC_URL}/#/resume`}>Résumé</a></li>
                     <li><a href={`${process.env.PUBLIC_URL}/#/about/site`}>Blog</a></li>
@@ -44,9 +36,9 @@ export function Home()
                     <li><a href={`${process.env.PUBLIC_URL}/#/about`}>About</a></li>
                     <li><a href={`${process.env.PUBLIC_URL}/#/home/intro`}>Rewatch intro</a></li>
                 </ul>
-            </div>
+            </div> */}
 
-            <div style={{ position: "absolute" }}>
+            {/* <div style={{ position: "absolute" }}>
                 <DiscordBox lanyardData={lanyard} />
                 <br />
                 <Card style={{ backgroundColor: "#23272a" }}>
@@ -56,6 +48,9 @@ export function Home()
                         </Row>
                     </Card.Body>
                 </Card>
+            </div> */}
+            <div className="home-taskbar">
+                <img className="start-button" src={startButton}/>
             </div>
         </div>
     );

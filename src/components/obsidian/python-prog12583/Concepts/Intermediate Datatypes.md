@@ -19,9 +19,9 @@ What do I mean by that? Well, a dictionary is basically a list right? It is a li
 Example:
 ```
 birthdays = {
-	"chien": "Jan 5"
+	"sienna": "Jan 5"
 	"obama": "Aug 4"
-	"santa": "Dec 24"    # that's not his birthday
+	"santa": "Dec 24"    # that's not her birthday
 }
 ```
 The above structure is called a **dictionary**, but in other languages, this is called a **hashmap** (you're going to hear this word a ton in the future). 
