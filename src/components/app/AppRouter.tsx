@@ -2,23 +2,22 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 
 import HexViewer from "../hex-viewer/HexViewer";
 import { ObsidianViewer } from "../obsidian/ObsidianViewer";
-import { Home } from "../home/Home";
+
 import { AboutMe } from "../resume/AboutMe";
 import { Coding } from "../resume/Coding";
 import { Writing } from "../resume/Writing";
 import { AboutSite } from "../resume/AboutSite";
 import { Resume } from "../resume/Resume";
 import { LoadingScreen } from "../home/LoadingScreen";
-import { NewHome } from "../home/NewHome";
+import Home from "components/home/Home";
 
 export function AppRouter()
 {
     return (
         <HashRouter>
             <Routes>
-                <Route path="" element={<NewHome />} />
                 {/* <Route path="" element={<LoadingScreen />} /> */}
-                <Route path="home" element={<Home />} />
+                <Route path="" element={<Home />} />
                 <Route path="home/intro" element={<LoadingScreen />} />
                 {/* <Route path="/dashboard" element={<Dashboard />} /> */}
 

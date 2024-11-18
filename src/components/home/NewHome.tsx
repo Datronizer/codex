@@ -59,10 +59,10 @@ export class NewHome extends React.Component<P, S>
                 <div className="trail-blocker">
                     {React.cloneElement(<div className="trail-elements" />,)}
                 </div>
-                <h1 className="name-container">
+                {/* <h1 className="name-container">
                     <div>Name</div>
                     <div>Surname</div>
-                </h1>
+                </h1> */}
 
             </div>
         );

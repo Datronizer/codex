@@ -4,14 +4,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import startButton from  "../../assets/win98-start-button.png";
+import PageIcon from "./subcomponents/PageIcon";
 
 const CDN = "https://cdn.discordapp.com/";
 const URL = `https://api.lanyard.rest/v1/users/${process.env.REACT_APP_DISCORD_ID}`;
 
 
-export function Home()
+export default function Home()
 {
     const [lanyard, setLanyard] = useState<LanyardData>();
+    const [startToggle, setStartToggle] = useState<boolean>(false);
 
     useEffect(() =>
     {
@@ -28,15 +30,16 @@ export function Home()
 
     return (
         <div className="home-container">
-            {/* <div className="menu-container">
-                <ul className="menu">
+            <div className="menu-container">
+                <PageIcon></PageIcon>
+                {/* <ul className="menu">
                     <li><a href={`${process.env.PUBLIC_URL}/#/resume`}>Résumé</a></li>
                     <li><a href={`${process.env.PUBLIC_URL}/#/about/site`}>Blog</a></li>
                     <li><a href={`${process.env.PUBLIC_URL}/#/hex`}>Projects</a></li>
                     <li><a href={`${process.env.PUBLIC_URL}/#/about`}>About</a></li>
                     <li><a href={`${process.env.PUBLIC_URL}/#/home/intro`}>Rewatch intro</a></li>
-                </ul>
-            </div> */}
+                </ul> */}
+            </div>
 
             {/* <div style={{ position: "absolute" }}>
                 <DiscordBox lanyardData={lanyard} />
@@ -49,8 +52,8 @@ export function Home()
                     </Card.Body>
                 </Card>
             </div> */}
-            <div className="home-taskbar">
-                <img className="start-button" src={startButton}/>
+            <div className={`home-taskbar ${startToggle ? "active" : ""}`}>
+                <input type="checkbox" className="start-button" src={startButton}/>
             </div>
         </div>
     );
