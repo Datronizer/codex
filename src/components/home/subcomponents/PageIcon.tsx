@@ -4,7 +4,7 @@ export default function PageIcon()
 
     return (
         <div>
-            <img id={`icon-${tempProp}`} width="48px" height="48px"/>
+            <img id={`icon-${tempProp}`} width="48px" height="48px" alt="Logo of app name [insert app name here]" />
             <p>App Name</p>
         </div>
     )
