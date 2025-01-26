@@ -10,6 +10,8 @@ import { AboutSite } from "../resume/AboutSite";
 import { Resume } from "../resume/Resume";
 import { LoadingScreen } from "../home/LoadingScreen";
 import Home from "components/home/Home";
+import { Calculator } from "components/tools/lol/components/calculator/Calculator";
+import { ChampionDetails } from "components/tools/lol/ChampionDetails";
 
 export function AppRouter()
 {
@@ -29,6 +31,20 @@ export function AppRouter()
                     <Route path="coding" element={<Coding />} />
                     <Route path="writing" element={<Writing />} />
                     <Route path="site" element={<AboutSite />} />
+                </Route>
+
+                <Route path="tools">
+                    <Route path="lol">
+                        <Route path="" element={<div>lol</div>} />
+                        <Route path=":version">
+                        <Route path="items" element={<div>items</div>} />
+                        <Route path="champions" >
+                            <Route path="" element={<div>champions</div>} />
+                            <Route path=":champion" element={<ChampionDetails />} />
+                        </Route>
+                        <Route path="calculator" element={<Calculator />} />
+                        </Route>
+                    </Route>
                 </Route>
 
                 <Route path="resume">

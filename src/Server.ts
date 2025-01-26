@@ -6,22 +6,23 @@ export class Server
         const res = await fetch(url, {
             method: "GET",
             headers: {
+                Authorization: `Bearer ${process.env.REACT_APP_TRUEONGOD_TOKEN}`,
                 Accept: "application/json",
             },
-        });
+        })
         const json = res.json().catch(() => undefined);
         return json;
     }
 
-    public static async getWithQuery(path:string, query: any): Promise<any>
+    public static async getWithQuery(path: string, query: any): Promise<any>
     {
-        const headers = []
+        const headers = [];
         for (const key in query) 
         {
-            headers.push(`${key}=${query[key]}`)
+            headers.push(`${key}=${query[key]}`);
         }
 
-        const newPath = (path + "?") + headers.join("&")
+        const newPath = (path + "?") + headers.join("&");
 
         const res = await fetch(newPath, {
             method: "GET",

@@ -11,20 +11,21 @@
     "axios": "^1.7.7",
     "bootstrap": "^5.2.3",
     "buffer": "^6.0.3",
+    "chart.js": "^4.4.7",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "crypto-browserify": "^3.12.0",
-    "eslint": "^8.36.0",
+    "eslint": "^8.57.1",
     "luxon": "^3.4.3",
     "marked": "^9.1.4",
-    "node-sass": "^7.0.3",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
+    "react-chartjs-2": "^5.3.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
     "reflect-metadata": "^0.1.13",
-    "sass": "^1.69.6",
+    "sass": "^1.83.4",
     "stylelint": "^16.1.0",
     "stylelint-config-standard-scss": "^12.0.0",
     "texme": "^1.2.2",
@@ -62,5 +63,6 @@
     "@types/react": "^18.2.34",
     "@types/react-dom": "^18.2.14",
     "zero-md": "^2.5.3"
-  }
+  },
+  "exports": "./src/index.tsx"
 }
