@@ -37,12 +37,12 @@ export function AppRouter()
                     <Route path="lol">
                         <Route path="" element={<div>lol</div>} />
                         <Route path=":version">
-                        <Route path="items" element={<div>items</div>} />
-                        <Route path="champions" >
-                            <Route path="" element={<div>champions</div>} />
-                            <Route path=":champion" element={<ChampionDetails />} />
-                        </Route>
-                        <Route path="calculator" element={<Calculator />} />
+                            <Route path="items" element={<div>items</div>} />
+                            <Route path="champions" >
+                                <Route path="" element={<div>champions</div>} />
+                                <Route path=":champion" element={<ChampionDetails />} />
+                            </Route>
+                            <Route path="calculator" element={<Calculator />} />
                         </Route>
                     </Route>
                 </Route>

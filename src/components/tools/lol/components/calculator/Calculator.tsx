@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { Spinner } from "react-bootstrap";
+import { Col, Row, Spinner } from "react-bootstrap";
 import { ChampionDataDto } from "components/tools/lol/dto/Champion.dto";
 
 export function Calculator()
 {
     const [version, setVersion] = useState<string>("");
     const [champions, setChampions] = useState<ChampionDataDto[]>([]);
+    const [items, setItems] = useState<any[]>([]);
 
     useEffect(() =>
     {
@@ -44,23 +45,35 @@ export function Calculator()
         getChampions(version);
     }, [version]);
 
+    useEffect(() => 
+    {
 
-    console.log(champions);
+    }, [items]);
 
     return (
-        <div>
-            <h1>Calculator</h1>
-            {
-                champions && champions.length > 0 ?
-                    champions.map((champion: any) => (
-                        
-                        <div key={champion.id}>
-                            <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champion.image.full}`} alt={champion.name} />
-                            <p>{champion.name}</p>
-                        </div>
-                    ))
-                    : <Spinner animation="border" />
-            }
+        <div className="mx-2 my-2">
+            <Row>
+                <Col>
+                    <h1>Champions</h1>
+                    {
+                        champions && champions.length > 0 ?
+                            champions.map((champion: any) => (
+
+                                <div key={champion.id} onClick={() => console.log(champion.name)}>
+                                    <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champion.image.full}`} alt={champion.name} />
+                                    <p>{champion.name}</p>
+                                </div>
+                            ))
+                            : <Spinner animation="border" />
+                    }
+                </Col>
+                <Col>
+                    <h1>Calculator</h1>
+                </Col>
+                <Col>
+                    <h1>Items</h1>
+                </Col>
+            </Row>
         </div>
     );
 }
