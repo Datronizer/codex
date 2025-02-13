@@ -12,6 +12,7 @@ import { LoadingScreen } from "../home/LoadingScreen";
 import Home from "components/home/Home";
 import { Calculator } from "components/tools/lol/components/calculator/Calculator";
 import { ChampionDetails } from "components/tools/lol/ChampionDetails";
+import { FittingRoom } from "components/tools/lol/fitting-room/FittingRoom";
 
 export function AppRouter()
 {
@@ -43,7 +44,9 @@ export function AppRouter()
                                 <Route path=":champion" element={<ChampionDetails />} />
                             </Route>
                             <Route path="calculator" element={<Calculator />} />
+                            <Route path="fitting-room" element={<FittingRoom />} />
                         </Route>
+                        <Route path="fitting-room" element={<FittingRoom />} />
                     </Route>
                 </Route>
 

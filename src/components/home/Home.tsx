@@ -18,10 +18,9 @@ export default function Home()
     {
         const intervalId = setInterval(() =>
         {
-
-            axios.get<LanyardResponse>(URL)
-                .then(e => setLanyard(e.data.data))
-                .catch(err => console.error(err));
+            // axios.get<LanyardResponse>(URL)
+            //     .then(e => setLanyard(e.data.data))
+            //     .catch(err => console.error(err));
         }, 5000);
 
         return () => clearInterval(intervalId);
