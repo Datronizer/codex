@@ -1,0 +1,44 @@
+{
+    "id": 2504,
+    "name": "Kaenic Rookern",
+    "stats": {
+        "spellblock": 80,
+        "health": 400,
+        "hpregen": 1
+    },
+    "cost": {
+        "base": 800,
+        "total": 2900,
+        "sell": 2030
+    },
+    "passives": [
+        {
+            "name": "Magebane",
+            "description": "After not taking <magicDamage>magic damage</magicDamage> for 15 seconds, gain a <shield>shield</shield> that absorbs <magicDamage>magic damage</magicDamage> equal to <health>{{ maxHealthSpellShield }}<health> until destroyed.",
+            "image": "https://opgg-static.akamaized.net/images/lol/passive/Rookern_Passive.png?image=q_auto,w_48&v=1591083841",
+            "unique": true
+        }
+    ],
+    "active": [],
+    "buildsFrom": [
+        3211,
+        1057
+    ],
+    "buildsInto": [],
+    "vars": [
+        {
+            "maxHealthSpellShield": 0.15
+        }
+    ],
+    "maps": {
+        "SR": true,
+        "HA": true,
+        "NB": true,
+        "URF": true
+    },
+    "menus": [
+        "Tank",
+        "HealthAndRegeneration",
+        "MagicResistance"
+    ]
+}

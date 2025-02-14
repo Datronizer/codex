@@ -1,0 +1,50 @@
+{
+    "id": 1028,
+    "name": "Ruby Crystal",
+    "stats": {
+        "health": 150
+    },
+    "cost": {
+        "base": 400,
+        "total": 400,
+        "sell": 280
+    },
+    "passives": [],
+    "active": [],
+    "buildsFrom": [],
+    "buildsInto": [
+        1011,
+        2021,
+        3044,
+        3053,
+        3066,
+        3067,
+        3075,
+        3147,
+        3161,
+        3211,
+        3742,
+        3801,
+        3803,
+        4401,
+        6610,
+        6660,
+        6662
+    ],
+    "vars": [],
+    "maps": {
+        "SR": true,
+        "HA": true,
+        "NB": true,
+        "URF": true
+    },
+    "menus": [
+        "Fighter",
+        "Marksman",
+        "Assassin",
+        "Mage",
+        "Tank",
+        "Support",
+        "HealthAndRegeneration"
+    ]
+}

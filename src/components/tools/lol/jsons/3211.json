@@ -1,0 +1,39 @@
+{
+    "id": 3211,
+    "name": "Spectre's Cowl",
+    "stats": {
+        "spellblock": 35,
+        "health": 200,
+        "hpregen": 1
+    },
+    "cost": {
+        "base": 150,
+        "total": 1250,
+        "sell": 875
+    },
+    "passives": [],
+    "active": [],
+    "buildsFrom": [
+        1006,
+        1028,
+        1033
+    ],
+    "buildsInto": [
+        2504,
+        3605,
+        6664
+    ],
+    "vars": [],
+    "maps": {
+        "SR": true,
+        "HA": true,
+        "NB": true,
+        "URF": true
+    },
+    "menus": [
+        "Tank",
+        "Support",
+        "HealthAndRegeneration",
+        "MagicResistance"
+    ]
+}
