@@ -5,6 +5,8 @@ import "../LeagueTooltip.scss";
 import { BonusStats, formatText } from "../LolUtils";
 import { ItemSquare } from "./ItemSquare";
 import { ChampionStats } from "./ChampionStats";
+import { ChampionAbility } from "./ChampionAbility";
+import { LolEvents } from "./LolEvents";
 
 
 export function FittingRoom()
@@ -170,11 +172,11 @@ export function FittingRoom()
     };
 
     return (
-        <div className="mx-2 my-2">
+        <div className="mx-2 my-2 league-container">
             <Row>
                 <Col>
-                    <Accordion defaultActiveKey={["0"]} alwaysOpen>
-                        <Accordion.Item eventKey="0">
+                    <Accordion defaultActiveKey={["0"]} alwaysOpen className="league-container">
+                        <Accordion.Item eventKey="0" className="league-container">
                             <Accordion.Header>Champion</Accordion.Header>
                             <Accordion.Body>
                                 <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
@@ -191,7 +193,7 @@ export function FittingRoom()
                                 </div>
                             </Accordion.Body>
                         </Accordion.Item>
-                        <Accordion.Item eventKey="1">
+                        <Accordion.Item eventKey="1" className="league-container">
                             <Accordion.Header>Item</Accordion.Header>
                             <Accordion.Body>
                                 <div >
@@ -216,8 +218,6 @@ export function FittingRoom()
                             </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
-                    {/* <h1 style={{ textAlign: "center" }}>Champions</h1> */}
-
                 </Col>
                 <Col>
                     <h1 style={{ textAlign: "center" }}>Calculator</h1>
@@ -226,7 +226,8 @@ export function FittingRoom()
                 <Col>
                     <h1 style={{ textAlign: "center" }}>Events</h1>
                     <div>
-                        {/* <EventList /> */}
+                        <LolEvents/>
+                        {/* <EventList />
                         {champion?.spells.map((spell) => (
                             <ChampionAbility
                                 champFull={championFull}
@@ -237,7 +238,7 @@ export function FittingRoom()
                                 // simplified
                                 key={spell.name}
                             />
-                        ))}
+                        ))} */}
                     </div>
                 </Col>
             </Row>
@@ -357,6 +358,7 @@ function ItemColumn(props: {
 function SelectedItemsTable(props: {
     inventory: any[],
     version: string;
+    armor?: number;
     bonusStats: BonusStats;
     setInventory: (e: any[]) => void;
     setBonusStats?: (e: StatsDto) => void;
@@ -401,7 +403,7 @@ function SelectedItemsTable(props: {
                         </tr>
                         <tr>
                             <td>Armor</td>
-                            <td>{`${bonusStats.FlatArmorMod} | %%%% => ${0}% dmg red.`} </td>
+                            <td>{bonusStats.FlatArmorMod}</td>
                         </tr>
                         <tr>
                             <td>Magic Resist</td>
@@ -417,7 +419,7 @@ function SelectedItemsTable(props: {
                         </tr>
                         <tr>
                             <td>Crit Chance</td>
-                            <td>{bonusStats.FlatCritChanceMod}</td>
+                            <td>{bonusStats.FlatCritChanceMod * 100}%</td>
                         </tr>
                         <tr>
                             <td>Movement Speed</td>
@@ -431,71 +433,6 @@ function SelectedItemsTable(props: {
 }
 
 
-function ChampionAbility({ ability, version, resource, simplified, champFull, champName }: { ability: SpellDto; version: string; resource: string; simplified?: boolean; champFull: any; champName: string; })
-{
-
-    const replacePlaceholderWithValue = (text: string, placeholder: string, value: string): string =>
-    {
-        // Find all substrings that is in between {{ }}
-        const regex = new RegExp(`{{\\s*\\w+\\s*}}`, 'g');
-        const matches = text.match(regex);
-
-
-        // console.log(matches);
-        return "aaa";
-    };
-
-    const findPlaceholderValue = () =>
-    {
-        const keyName = `Characters/${champName}/Spells/${ability.id}Ability`;
-        // console.log("ability", ability);
-        // console.log("keyName", keyName, champFull);
-        // console.log("champFull", champFull[keyName]);
-    };
-
-
-    findPlaceholderValue();
-    return (
-        <tr key={ability.name} className="league-container champion-abilities">
-            <td>
-                <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${ability.image.full}`} alt={ability.name} />
-            </td>
-            <td>
-                {/*  */}
-                <p>{
-                    ability.resource
-                        .replace("{{ cost }}", ability.cost[0].toString())
-                        .replace("{{ abilityresourcename }}", resource)
-                }
-                </p>
-            </td>
-            <td>
-                <h3>{ability.name}</h3>
-                <p>
-                    {
-                        simplified
-                            ? formatText(ability.description)
-                            : formatText(ability.tooltip)
-
-                    }
-                </p>
-                <p>{replacePlaceholderWithValue(ability.tooltip, "qbasedamageNL", "69")}</p>
-            </td>
-            <td>
-                <h3>original</h3>
-                <p>
-                    {
-                        simplified
-                            ? ability.description
-                            : ability.tooltip
-
-                    }
-                </p>
-                {/* <p>{replacePlaceholderWithValue(formatText(ability.tooltip), "qbasedamageNL", "69")}</p> */}
-            </td>
-        </tr>
-    );
-}
 function ChampionPassive({ ability, version }: { ability: PassiveDto; version: string; })
 {
     return (

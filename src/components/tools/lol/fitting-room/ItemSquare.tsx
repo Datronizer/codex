@@ -1,5 +1,5 @@
 import { Button, Card, OverlayTrigger, Popover, Tooltip } from "react-bootstrap";
-import { formatText } from "../LolUtils";
+import { formatItemActive, formatItemPassive, formatItemStats, formatText } from "../LolUtils";
 
 export function ItemSquare(props: {
     item: any;
@@ -10,22 +10,20 @@ export function ItemSquare(props: {
 {
     const { item, version, onItemClick } = props;
     const text = item.description;
-    //
 
-
-
-
-    //
-
+    formatItemStats(text)
 
     return (
         <OverlayTrigger
             placement="top"
             overlay={
-                <Popover>
+                <Popover className="league-container">
                     <Popover.Body>
-                        <div><h6>{item.name}</h6></div>
-                        <div>{formatText(text)}</div>
+                        <div><h6 className="league-header">{item.name}</h6></div>
+                        {/* <div>{formatText(text)}</div> */}
+                        <div>{formatItemStats(text)}</div>
+                        <div>{formatItemPassive(text)}</div>
+                        <div>{formatItemActive(text)}</div>
                     </Popover.Body>
                 </Popover>
             }

@@ -1,6 +1,15 @@
+$bs-body-bg: #000B12 !important;
+
+.league-container {
+    background-color: #000B12 !important;
+    border: 1px solid #ad9c72 !important;
+    color: #ad9c72 !important;
+}
+
 .league-container>td {
     background-color: #000B12 !important;
 }
+
 .champion-abilities>td {
     color: #ad9c72 !important;
 }
@@ -17,6 +26,11 @@
 }
 
 
+
+.league-header {
+    background-color: #000B12 !important;
+    color: #dfd6be !important;
+}
 
 
 

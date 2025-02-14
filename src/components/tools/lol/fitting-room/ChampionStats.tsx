@@ -1,5 +1,5 @@
 import { Form, Table } from "react-bootstrap";
-import { STATS_ICON_URL, statAtLevel, attackSpeedAtLevel, calculateMovespeed, BonusStats } from "../LolUtils";
+import { STATS_ICON_URL, statAtLevel, attackSpeedAtLevel, calculateMovespeed, BonusStats, calculateArmorDmgReduction, calculateMRDmgReduction } from "../LolUtils";
 
 export const ChampionStats = (props: {
     stats: any,
@@ -41,11 +41,23 @@ export const ChampionStats = (props: {
                 <tr>
                     <td>
                         <img src={`${STATS_ICON_URL}/scalearmor.png`} alt="Armor" />
-                        {statAtLevel(stats.baseArmor, stats.armorPerLevel, championLevel, bonus.FlatArmorMod)} {/* Armor */}
+                        {
+                            statAtLevel(stats.baseArmor, stats.armorPerLevel, championLevel, bonus.FlatArmorMod)
+                            + ` (${Math.round(
+                                (1 - calculateArmorDmgReduction(
+                                    statAtLevel(stats.baseArmor, stats.armorPerLevel, championLevel, bonus.FlatArmorMod)
+                                )) * 100)}% dmg red.)`
+                        }
                     </td>
                     <td>
                         <img src={`${STATS_ICON_URL}/scalemr.png`} alt="Magic Resist" />
-                        {statAtLevel(stats.baseSpellBlock, stats.spellBlockPerLevel, championLevel, bonus.FlatSpellBlockMod)} {/* Magic resist */}
+                        {
+                            statAtLevel(stats.baseSpellBlock, stats.spellBlockPerLevel, championLevel, bonus.FlatSpellBlockMod)
+                            + ` (${Math.round(
+                                (1 - calculateMRDmgReduction(
+                                    statAtLevel(stats.baseSpellBlock, stats.spellBlockPerLevel, championLevel, bonus.FlatSpellBlockMod)
+                                )) * 100)}% dmg red.)`
+                        } 
                     </td>
                 </tr>
                 <tr>
@@ -62,7 +74,7 @@ export const ChampionStats = (props: {
                 <tr>
                     <td>
                         <img src={`${STATS_ICON_URL}/scalecrit.png`} alt="Crit chance" />
-                        {bonus.FlatCritChanceMod}%
+                        {bonus.FlatCritChanceMod * 100}%
                     </td>
                     <td>
                         <img src={`${STATS_ICON_URL}/scalems.png`} alt="Movement Speed" />
