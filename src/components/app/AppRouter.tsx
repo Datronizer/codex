@@ -8,8 +8,8 @@ import { Coding } from "../resume/Coding";
 import { Writing } from "../resume/Writing";
 import { AboutSite } from "../resume/AboutSite";
 import { Resume } from "../resume/Resume";
-import { LoadingScreen } from "../home/LoadingScreen";
-import Home from "components/home/Home";
+// import { LoadingScreen } from "../home/LoadingScreen";
+// import Home from "components/home/Home";
 
 export function AppRouter()
 {
@@ -17,8 +17,8 @@ export function AppRouter()
         <HashRouter>
             <Routes>
                 {/* <Route path="" element={<LoadingScreen />} /> */}
-                <Route path="" element={<Home />} />
-                <Route path="home/intro" element={<LoadingScreen />} />
+                {/* <Route path="" element={<Home />} /> */}
+                {/* <Route path="home/intro" element={<LoadingScreen />} /> */}
                 {/* <Route path="/dashboard" element={<Dashboard />} /> */}
 
                 <Route path="hex" element={<HexViewer />} />

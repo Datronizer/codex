@@ -2,7 +2,6 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import { IpLocationDto } from "./dtos/IpLocation.dto";
 import { getRandomChar } from "../../util";
-import axios from "axios";
 
 type P = {};
 type S = {
@@ -26,26 +25,26 @@ export class LoadingScreen extends React.Component<P, S>
 
     public async componentDidMount(): Promise<void>
     {
-        await axios.get("https://api.ipgeolocation.io/ipgeo", {
-            params: {
-                apiKey: process.env.REACT_APP_IPGEOLOCATION_API_KEY
-            }
-        }).then(e => console.log(e.data)).catch(err => console.log(err))
+        // await axios.get("https://api.ipgeolocation.io/ipgeo", {
+        //     params: {
+        //         apiKey: process.env.REACT_APP_IPGEOLOCATION_API_KEY
+        //     }
+        // }).then(e => console.log(e.data)).catch(err => console.log(err))
 
-        setTimeout(async () =>
-            this.setState({
-                userLocation: await axios.get("https://api.ipgeolocation.io/ipgeo", {
-                    params: {
-                        apiKey: process.env.REACT_APP_IPGEOLOCATION_API_KEY
-                    }
-                })
-            }),
-            8000 + 3000 // please change back to 6000
-        );
+        // setTimeout(async () =>
+        //     this.setState({
+        //         userLocation: await axios.get("https://api.ipgeolocation.io/ipgeo", {
+        //             params: {
+        //                 apiKey: process.env.REACT_APP_IPGEOLOCATION_API_KEY
+        //             }
+        //         })
+        //     }),
+        //     8000 + 3000 // please change back to 6000
+        // );
 
-        setTimeout(() => this.buildText(this.state.jumbledText1), 2500 + 3000);
-        setTimeout(() => this.unscramble("Establishing connection"), 4500 + 3000);
-        setTimeout(() => window.location.hash = "/home", 12500 + 8000 + 5000 + 3000); // Seq2 duration + seq1 + dampener + epilepsy warning
+        // setTimeout(() => this.buildText(this.state.jumbledText1), 2500 + 3000);
+        // setTimeout(() => this.unscramble("Establishing connection"), 4500 + 3000);
+        // setTimeout(() => window.location.hash = "/home", 12500 + 8000 + 5000 + 3000); // Seq2 duration + seq1 + dampener + epilepsy warning
     }
 
     private scramble(text: string): string
