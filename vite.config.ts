@@ -6,4 +6,5 @@ export default defineConfig({
     build: {
         outDir: 'build', // CRA's default build output
     },
+    publicDir: 'public',
 });

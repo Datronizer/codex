@@ -1,4 +1,4 @@
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 
 import HexViewer from "../hex-viewer/HexViewer";
 import { ObsidianViewer } from "../obsidian/ObsidianViewer";
@@ -14,7 +14,7 @@ import { Resume } from "../resume/Resume";
 export function AppRouter()
 {
     return (
-        <HashRouter>
+        <BrowserRouter>
             <Routes>
                 {/* <Route path="" element={<LoadingScreen />} /> */}
                 {/* <Route path="" element={<Home />} /> */}
@@ -35,6 +35,6 @@ export function AppRouter()
                     <Route path="" element={<Resume />} />
                 </Route>
             </Routes>
-        </HashRouter>
+        </BrowserRouter>
     );
 }

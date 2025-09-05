@@ -1,8 +1,7 @@
 import { LanyardResponse, LanyardData } from "./dtos/LanyardTypes";
 import { useEffect, useState } from "react";
-import axios from "axios";
 
-import startButton from "../../assets/win98-start-button.png";
+import startButton from "/assets/win98-start-button.png";
 import PageIcon from "./subcomponents/PageIcon";
 
 // const CDN = "https://cdn.discordapp.com/";

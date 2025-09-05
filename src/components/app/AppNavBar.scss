@@ -1,10 +1,13 @@
 .center-nav {
     justify-content: space-around;
 }
-.center-nav > div >a{
-    margin: 0 0.5rem;
+
+.center-nav>div>a {
+    align-content: center;
+    margin: 0 1rem;
 }
 
 .navbar-brand {
     margin: 0 2.5rem !important;
+    font-size: x-large;
 }
