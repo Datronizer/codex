@@ -1,0 +1,16 @@
+@use "../../const.scss" as const;
+
+.App {
+    background-color: const.$base-background;
+    color: const.$base-color;
+
+    height: 100%;
+
+    display: block;
+    overflow: auto;
+}
+
+.root {
+    // background-color: const.$base-background;
+    
+}

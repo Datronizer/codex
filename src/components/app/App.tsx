@@ -1,6 +1,7 @@
 import { AppNavBar } from './AppNavBar';
 import { AppRouter } from './AppRouter';
 import { Footer } from './Footer';
+import "./App.scss";
 
 export default function App()
 {

@@ -6,7 +6,8 @@ import App from './components/app/App';
 import reportWebVitals from './reportWebVitals';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './stylesheets/css/index.css';
+// import './stylesheets/css/index.css';
+import './index.css';
 
 
 const root = ReactDOM.createRoot(

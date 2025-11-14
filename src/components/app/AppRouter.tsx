@@ -8,6 +8,7 @@ import { Coding } from "../resume/Coding";
 import { Writing } from "../resume/Writing";
 import { AboutSite } from "../resume/AboutSite";
 import { Resume } from "../resume/Resume";
+import { NotFound } from "./NotFound";
 // import { LoadingScreen } from "../home/LoadingScreen";
 // import Home from "components/home/Home";
 
@@ -34,6 +35,8 @@ export function AppRouter()
                 <Route path="resume">
                     <Route path="" element={<Resume />} />
                 </Route>
+
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>
     );
