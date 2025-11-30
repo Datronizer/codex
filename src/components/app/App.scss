@@ -1,13 +1,11 @@
 @use "../../const.scss" as const;
 
 .App {
-    background-color: const.$base-background;
-    color: const.$base-color;
-
-    height: 100%;
-
-    display: block;
-    overflow: auto;
+    background-color: #0b1018;
+    color: #e5eef9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .root {

@@ -1,11 +1,10 @@
-import { LanyardResponse, LanyardData } from "./dtos/LanyardTypes";
 import { FC, useEffect, useState } from "react";
-
-// import startButton from "/assets/win98-start-button.png";
-import PageIcon from "./subcomponents/PageIcon";
+import { LuArrowUpRight } from "react-icons/lu";
+import { SiArtstation, SiGithub, SiLeetcode, SiLinkedin } from "react-icons/si";
 import { Server } from "@/Server";
-import { Card, Row } from "react-bootstrap";
 import { DiscordBox } from "../dashboard/DiscordBox";
+import { LanyardData, LanyardResponse } from "./dtos/LanyardTypes";
+import "./Home.scss";
 
 
 const URL = `https://api.lanyard.rest/v1/users/${import.meta.env.VITE_DISCORD_ID}`;
@@ -14,80 +13,139 @@ const URL = `https://api.lanyard.rest/v1/users/${import.meta.env.VITE_DISCORD_ID
 export const Home: FC = () =>
 {
     const [lanyard, setLanyard] = useState<LanyardData>();
-    const [startToggle, setStartToggle] = useState<boolean>(false);
     const projectLinks = [
         {
             title: "CareerLift AI",
-            description: "Want to see how you fare in the job market? Try out my AI-powered resume analyzer and job matcher!",
+            description: "AI-powered resume analyzer and matcher to see how you stack up.",
             href: import.meta.env.VITE_PORTFOLIO_URL || "https://careerlift.trueongod.com/",
-            isNewProject: true
+            tags: ["AI", "Product", "New"]
         },
         {
             title: "YarkNet",
-            description: "A simple space simulator to view the Yarkovsky effect on asteroids over time.",
+            description: "A playful space sim to explore the Yarkovsky effect on asteroids.",
             href: import.meta.env.VITE_YARKNET_URL || "https://yarknet.trueongod.com/",
-            isNewProject: true
+            tags: ["Visualization", "Physics"]
         },
         {
             title: "GitHub",
-            description: "Browse the rest of my repos, experiments, and archived builds.",
+            description: "Repos, experiments, and all the half-finished rabbit holes.",
             href: import.meta.env.VITE_GITHUB_URL || "https://github.com/"
         },
         {
             title: "More coming soon",
-            description: "I'm regularly shipping — check back for new posts and links.",
+            description: "Shipping frequently — expect new drops, tools, and writeups.",
             href: import.meta.env.VITE_PORTFOLIO_URL || "https://github.com/"
+        }
+    ];
+
+    const highlightStats = [
+        { label: "Projects shipped", value: "20+" },
+        { label: "Focus areas", value: "AI, UX, systems" },
+        { label: "Now building", value: "CareerLift + space sims" }
+    ];
+
+    const socialLinks = [
+        {
+            label: "GitHub",
+            href: import.meta.env.VITE_GITHUB_URL || "https://github.com/",
+            icon: <SiGithub size={18} />
+        },
+        {
+            label: "ArtStation",
+            href: "https://www.artstation.com/Datronizer",
+            icon: <SiArtstation size={18} />
+        },
+        {
+            label: "LeetCode",
+            href: "https://leetcode.com/u/Datronizer/",
+            icon: <SiLeetcode size={18} />
+        },
+        {
+            label: "LinkedIn",
+            href: "https://www.linkedin.com/in/tqc/",
+            icon: <SiLinkedin size={18} />
         }
     ];
 
     useEffect(() =>
     {
-        const intervalId = setInterval(() =>
+        const fetchLanyard = () =>
         {
             Server.get<LanyardResponse>(URL, true)
                 .then(e => setLanyard(e.data))
                 .catch(err => console.error(err));
-        }, 5000);
+        };
+
+        fetchLanyard();
+
+        const intervalId = setInterval(fetchLanyard, 5000);
 
         return () => clearInterval(intervalId);
-    }, [lanyard]);
+    }, []);
 
     return (
-        <div className="home-container">
-            <div className="menu-container">
-
-            </div>
-
-            <div className="home-content">
-                {/* <div className="discord-box-container">
-                    <DiscordBox lanyardData={lanyard} />
-                </div>
-                <Card style={{ backgroundColor: "#23272a" }}>
-                    <Card.Body className="" style={{ color: "white" }}>
-                        <Row>
-                            Blog goes here
-                        </Row>
-                    </Card.Body>
-                </Card> */}
-                <Card style={{ backgroundColor: "#23272a" }}>
-                    <Card.Body className="projects-card" style={{ color: "white" }}>
-                        <h5><b>Check out my other projects!</b></h5>
-                        <div className="projects-intro">A quick hop to the rest of the things I'm building.</div>
-                        <ul className="projects-list">
-                            {projectLinks.map(link => (
-                                <li key={link.title} className={`project-item ${link.isNewProject ? "new-project" : ""}`}>
-                                    <a className="project-link" href={link.href} target="_blank" rel="noreferrer">
-                                        {link.title}
-                                    </a>
-                                    <div className="project-summary">{link.description}</div>
-                                </li>
+        <div className="home-page">
+            <div className="content-shell">
+                <section className="hero-grid">
+                    <div className="hero-card">
+                        <div className="eyebrow">Product engineer & tinkerer</div>
+                        <h1 className="hero-title">Building thoughtful tools with a playful edge.</h1>
+                        <p className="lede">
+                            I design, code, and ship interfaces that feel deliberate — from AI products to tiny simulations
+                            that make you curious again.
+                        </p>
+                        <div className="hero-actions">
+                            <a className="primary-button" href="/resume">View resume</a>
+                            <a className="ghost-button" href="mailto:siennatruong@trueongod.com">Say hello</a>
+                        </div>
+                        <div className="hero-stats">
+                            {highlightStats.map(stat => (
+                                <div className="stat-chip" key={stat.label}>
+                                    <div className="stat-value">{stat.value}</div>
+                                    <div className="stat-label">{stat.label}</div>
+                                </div>
                             ))}
-                        </ul>
-                    </Card.Body>
-                </Card>
-            </div>
-            <div className={`home-taskbar ${startToggle ? "active" : ""}`}>
-                {/* <input type="checkbox" className="start-button" src={startButton} checked={startToggle} onChange={() => setStartToggle(!startToggle)} /> */}
+                        </div>
+                    </div>
+                    <div className="status-panel">
+                        <div className="panel-header">
+                            <span className="eyebrow">Live</span>
+                            <span className="live-dot" />
+                        </div>
+                        <DiscordBox lanyardData={lanyard} />
+                        <div className="panel-footer">
+                            Powered by Discord + Lanyard. Refreshes every few seconds.
+                        </div>
+                    </div>
+                </section>
+
+                <section className="projects-section">
+                    <div className="section-header">
+                        <div className="eyebrow">Projects</div>
+                        <h2>Check out my other projects</h2>
+                        <p className="section-subtitle">
+                            Experiments, shipped products, and ongoing builds that balance polish with curiosity.
+                        </p>
+                    </div>
+                    <div className="projects-grid">
+                        {projectLinks.map(link => (
+                            <a key={link.title} className="project-card" href={link.href} target="_blank" rel="noreferrer">
+                                <div className="project-card__top">
+                                    <div className="project-name">{link.title}</div>
+                                    <LuArrowUpRight aria-hidden />
+                                </div>
+                                <p className="project-summary">{link.description}</p>
+                                {link.tags &&
+                                    <div className="project-tags">
+                                        {link.tags.map(tag => (
+                                            <span key={`${link.title}-${tag}`} className="tag">{tag}</span>
+                                        ))}
+                                    </div>
+                                }
+                            </a>
+                        ))}
+                    </div>
+                </section>
             </div>
         </div>
     );

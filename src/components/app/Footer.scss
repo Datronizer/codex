@@ -1,57 +1,66 @@
-@use "../../const" as const;
 @use "sass:color";
 
+$bg: #0d121b;
+$border: #1f2a3a;
+$muted: #8ca0bb;
+$accent: #7cc8ff;
+
 footer {
-    height: const.$footer-height;
-
-    padding: 1em;
-
-    background-color: gray;
-    display: flex;
-    align-items: end;
+    padding: 2.5rem 1.5rem;
+    background: $bg;
+    color: #e5eef9;
+    border-top: 1px solid $border;
 }
 
-footer>div>div {
-    padding: 1em 0;
-    // margin: 1em;
-    border: 1px solid black;
+footer .container-fluid {
+    max-width: 1200px;
+}
+
+footer > div > div {
+    padding: 0.6rem 0;
+    border: none;
 }
 
 .footer-external-links {
-    padding: 0;
+    padding: 0.75rem 0 0.25rem;
 
     .col {
-        padding: 0;
-
+        padding: 0.35rem;
         display: flex;
         flex-direction: row;
         justify-content: center;
 
         button {
-            padding: 1em 2em;
+            padding: 0.85rem 1.1rem;
             width: 100%;
             display: flex;
             justify-content: space-between;
-
-            border: 1px solid blue;
-            background-color: transparent;
+            align-items: center;
+            border-radius: 0.9rem;
+            border: 1px solid $border;
+            background: rgba(255, 255, 255, 0.02);
+            color: #e5eef9;
+            transition: transform 140ms ease, border-color 150ms ease, background 150ms ease;
 
             :first-child {
                 border-right: 0;
             }
 
             &:hover {
-                background-color: color.adjust(const.$base-color, $lightness: -10%);
+                background: color.adjust($bg, $lightness: 4%);
+                border-color: color.adjust($border, $lightness: 12%);
+                transform: translateY(-2px);
             }
 
             span {
                 display: flex;
-                gap: 1em;
+                gap: 0.65rem;
+                align-items: center;
             }
         }
-
-        &:first-child {
-            border-right: 0;
-        }
     }
+}
+
+footer .row:first-child {
+    color: $muted;
 }

@@ -9,7 +9,7 @@ export const DiscordBox = ({ lanyardData }: { lanyardData?: LanyardData; }): JSX
     if (!lanyardData)
     {
         return (
-            <Card className="discord-card" style={{ backgroundColor: "#23272a" }}>
+            <Card className="discord-card">
                 <Card.Body className="discord-box">
                     Please wait... Loading Sienna's data
                 </Card.Body>
@@ -20,7 +20,7 @@ export const DiscordBox = ({ lanyardData }: { lanyardData?: LanyardData; }): JSX
     const game = lanyardData.activities.filter(e => e.name !== "Spotify")[0] ?? undefined;
 
     return (
-        <Card className="discord-card" style={{ backgroundColor: "#23272a" }}>
+        <Card className="discord-card">
             <Card.Body className="discord-box">
                 <Row>
                     <Col style={{ maxWidth: "fit-content" }}>
