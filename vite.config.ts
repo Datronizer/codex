@@ -7,4 +7,9 @@ export default defineConfig({
         outDir: 'build', // CRA's default build output
     },
     publicDir: 'public',
+    resolve: {
+        alias: {
+            '@': '/src',
+        },
+    },
 });

@@ -9,6 +9,7 @@ import { Writing } from "../resume/Writing";
 import { AboutSite } from "../resume/AboutSite";
 import { Resume } from "../resume/Resume";
 import { NotFound } from "./NotFound";
+import { Home } from "../home/Home";
 // import { LoadingScreen } from "../home/LoadingScreen";
 // import Home from "components/home/Home";
 
@@ -18,7 +19,7 @@ export function AppRouter()
         <BrowserRouter>
             <Routes>
                 {/* <Route path="" element={<LoadingScreen />} /> */}
-                {/* <Route path="" element={<Home />} /> */}
+                <Route path="" element={<Home />} />
                 {/* <Route path="home/intro" element={<LoadingScreen />} /> */}
                 {/* <Route path="/dashboard" element={<Dashboard />} /> */}
 

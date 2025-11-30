@@ -1,25 +1,51 @@
 import { LanyardResponse, LanyardData } from "./dtos/LanyardTypes";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
-import startButton from "/assets/win98-start-button.png";
+// import startButton from "/assets/win98-start-button.png";
 import PageIcon from "./subcomponents/PageIcon";
+import { Server } from "@/Server";
+import { Card, Row } from "react-bootstrap";
+import { DiscordBox } from "../dashboard/DiscordBox";
 
-// const CDN = "https://cdn.discordapp.com/";
-const URL = `https://api.lanyard.rest/v1/users/${process.env.REACT_APP_DISCORD_ID}`;
+
+const URL = `https://api.lanyard.rest/v1/users/${import.meta.env.VITE_DISCORD_ID}`;
 
 
-export default function Home()
+export const Home: FC = () =>
 {
     const [lanyard, setLanyard] = useState<LanyardData>();
     const [startToggle, setStartToggle] = useState<boolean>(false);
+    const projectLinks = [
+        {
+            title: "CareerLift AI",
+            description: "Want to see how you fare in the job market? Try out my AI-powered resume analyzer and job matcher!",
+            href: import.meta.env.VITE_PORTFOLIO_URL || "https://careerlift.trueongod.com/",
+            isNewProject: true
+        },
+        {
+            title: "YarkNet",
+            description: "A simple space simulator to view the Yarkovsky effect on asteroids over time.",
+            href: import.meta.env.VITE_YARKNET_URL || "https://yarknet.trueongod.com/",
+            isNewProject: true
+        },
+        {
+            title: "GitHub",
+            description: "Browse the rest of my repos, experiments, and archived builds.",
+            href: import.meta.env.VITE_GITHUB_URL || "https://github.com/"
+        },
+        {
+            title: "More coming soon",
+            description: "I'm regularly shipping — check back for new posts and links.",
+            href: import.meta.env.VITE_PORTFOLIO_URL || "https://github.com/"
+        }
+    ];
 
     useEffect(() =>
     {
         const intervalId = setInterval(() =>
         {
-
-            axios.get<LanyardResponse>(URL)
-                .then(e => setLanyard(e.data.data))
+            Server.get<LanyardResponse>(URL, true)
+                .then(e => setLanyard(e.data))
                 .catch(err => console.error(err));
         }, 5000);
 
@@ -29,164 +55,40 @@ export default function Home()
     return (
         <div className="home-container">
             <div className="menu-container">
-                <PageIcon></PageIcon>
-                {/* <ul className="menu">
-                    <li><a href={`${process.env.PUBLIC_URL}/#/resume`}>Résumé</a></li>
-                    <li><a href={`${process.env.PUBLIC_URL}/#/about/site`}>Blog</a></li>
-                    <li><a href={`${process.env.PUBLIC_URL}/#/hex`}>Projects</a></li>
-                    <li><a href={`${process.env.PUBLIC_URL}/#/about`}>About</a></li>
-                    <li><a href={`${process.env.PUBLIC_URL}/#/home/intro`}>Rewatch intro</a></li>
-                </ul> */}
+
             </div>
 
-            {/* <div style={{ position: "absolute" }}>
-                <DiscordBox lanyardData={lanyard} />
-                <br />
+            <div className="home-content">
+                {/* <div className="discord-box-container">
+                    <DiscordBox lanyardData={lanyard} />
+                </div>
                 <Card style={{ backgroundColor: "#23272a" }}>
                     <Card.Body className="" style={{ color: "white" }}>
                         <Row>
                             Blog goes here
                         </Row>
                     </Card.Body>
+                </Card> */}
+                <Card style={{ backgroundColor: "#23272a" }}>
+                    <Card.Body className="projects-card" style={{ color: "white" }}>
+                        <h5><b>Check out my other projects!</b></h5>
+                        <div className="projects-intro">A quick hop to the rest of the things I'm building.</div>
+                        <ul className="projects-list">
+                            {projectLinks.map(link => (
+                                <li key={link.title} className={`project-item ${link.isNewProject ? "new-project" : ""}`}>
+                                    <a className="project-link" href={link.href} target="_blank" rel="noreferrer">
+                                        {link.title}
+                                    </a>
+                                    <div className="project-summary">{link.description}</div>
+                                </li>
+                            ))}
+                        </ul>
+                    </Card.Body>
                 </Card>
-            </div> */}
+            </div>
             <div className={`home-taskbar ${startToggle ? "active" : ""}`}>
-                <input type="checkbox" className="start-button" src={startButton} checked={startToggle} onChange={() => setStartToggle(!startToggle)} />
+                {/* <input type="checkbox" className="start-button" src={startButton} checked={startToggle} onChange={() => setStartToggle(!startToggle)} /> */}
             </div>
         </div>
     );
 }
-
-// function DiscordBox({ lanyardData }: { lanyardData?: LanyardData; }): JSX.Element
-// {
-//     if (!lanyardData)
-//     {
-//         return (
-//             <Card style={{ backgroundColor: "#23272a" }}>
-//                 <Card.Body className="discord-box">
-//                     Please wait... Loading Sienna's data
-//                 </Card.Body>
-//             </Card>
-//         );
-//     }
-
-//     const game = lanyardData.activities.filter(e => e.name !== "Spotify")[0] ?? undefined;
-
-//     return (
-//         <Card style={{ backgroundColor: "#23272a" }}>
-//             <Card.Body className="discord-box">
-//                 <Row>
-//                     <Col style={{ maxWidth: "fit-content" }}>
-//                         <img
-//                             alt="Discord avatar"
-//                             className="discord-avatar"
-//                             src={`${CDN}/avatars/${lanyardData.discord_user?.id}/${lanyardData.discord_user?.avatar}`}
-//                         />
-//                     </Col>
-//                     <Col className="username">
-//                         <b>{lanyardData.discord_user?.global_name}</b>
-//                     </Col>
-//                     <Col className="button-container">
-//                         <div>
-//                             <button
-//                                 className="view-profile"
-//                                 onClick={() => window.location.href = `https://discord.com/users/${process.env.REACT_APP_DISCORD_ID}`}
-//                             >
-//                                 View Profile
-//                             </button>
-//                         </div>
-//                     </Col>
-//                 </Row>
-//                 {
-//                     lanyardData.spotify || game
-//                         ? <>
-//                             <hr style={{ border: "0.1rem solid lightgray" }} />
-//                             <Row>
-//                                 <Col>
-//                                     {
-//                                         lanyardData.spotify && game
-//                                             ? <>
-//                                                 <SpotifyCard spotify={lanyardData.spotify} />
-//                                                 <hr style={{ border: "0.1rem solid lightgray" }} />
-//                                                 <GameCard activity={lanyardData.activities.filter(e => e.name !== "Spotify")[0]} />
-//                                             </>
-//                                             : lanyardData.spotify
-//                                                 ? <SpotifyCard spotify={lanyardData.spotify} />
-//                                                 : <GameCard activity={lanyardData.activities.filter(e => e.name !== "Spotify")[0]} />
-//                                     }
-
-//                                 </Col>
-//                             </Row>
-//                         </>
-//                         : <div className="activities">Hmm... Looks like Sienna isn't doing anything at the moment</div>
-//                 }
-//             </Card.Body>
-//         </Card>
-//     );
-// }
-
-// function GameCard(props: { activity?: Activity; }): JSX.Element | null
-// {
-//     if (!props.activity)
-//     {
-//         return null;
-//     }
-
-//     return (
-//         <Row style={{ color: "white" }}>
-//             <h6><b>PLAYING A GAME</b></h6>
-//             <Row>
-//                 <Col style={{ maxWidth: "fit-content" }}>
-//                     <img
-//                         alt="Game icon"
-//                         style={{ width: "4.5rem", borderRadius: "0.5rem" }}
-//                         src={`${CDN}/app-assets/${props.activity.application_id}/${props.activity.assets?.large_image}`}
-//                     />
-//                 </Col>
-//                 <Col className="spotify-title">
-//                     <div>{props.activity.name}</div>
-//                     <div><small>{props.activity.details ?? null}</small></div>
-//                     <div><small>{props.activity.state}</small></div>
-//                 </Col>
-//             </Row>
-//         </Row>
-//     );
-// }
-
-// function SpotifyCard(props: { spotify?: Spotify; }): JSX.Element | null
-// {
-//     if (!props.spotify)
-//     {
-//         return null;
-//     }
-
-//     return (
-//         <Row style={{ color: "white" }}>
-//             <Row>
-//                 <Col><h6><b>LISTENING ON SPOTIFY</b></h6></Col>
-//                 <Col className="spotify-logo">
-//                     <img
-//                         alt="Spotify logo"
-//                         style={{ maxWidth: "1.5rem" }}
-//                         src="https://i0.wp.com/www.freepnglogos.com/uploads/spotify-logo-png/spotify-download-logo-30.png"
-//                     />
-//                 </Col>
-//             </Row>
-//             <Row>
-//                 <Col style={{ maxWidth: "fit-content" }}>
-//                     <img
-//                         alt="Album logo"
-//                         style={{ width: "4.5rem", borderRadius: "0.5rem" }}
-//                         src={props.spotify.album_art_url}
-//                     />
-//                 </Col>
-//                 <Col className="spotify-title">
-//                     <div>{props.spotify.song}</div>
-//                     <div><small>{props.spotify.artist}</small></div>
-//                     <div><small>on {props.spotify.album}</small></div>
-//                     {/* TODO: Add a duration bar here. On duration over, do a get request, else do it every 30s to save API */}
-//                 </Col>
-//             </Row>
-//         </Row>
-//     );
-// }

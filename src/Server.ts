@@ -1,8 +1,8 @@
 export class Server
 {
-    public static async get(path: string, external?: boolean): Promise<any>
+    public static async get<T>(path: string, external?: boolean): Promise<T>
     {
-        const url = !external ? process.env.REACT_APP_TRUEONGOD_URL + path : path;
+        const url = !external ? import.meta.env.VITE_TRUEONGOD_URL + path : path;
         const res = await fetch(url, {
             method: "GET",
             headers: {
