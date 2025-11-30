@@ -1,4 +1,62 @@
-$base-color: gray;
-$base-background: black;
-
+$color-background-dark: #0b1018;
+$color-surface-dark: #111827;
+$color-surface-strong-dark: #0f1724;
+$color-border-dark: #1f2a3a;
+$color-text-dark: #e5eef9;
+$color-muted-dark: #9fb3c8;
+$color-muted-strong-dark: #6f829a;
+$color-accent: #7bb6ed;
+$color-accent-contrast: #0a0f16;
+$shadow-dark: 0 25px 60px rgba(0, 0, 0, 0.35);
+$shadow-panel-dark: 0 16px 35px rgba(0, 0, 0, 0.35);
 $footer-height: 18em;
+
+$color-background-light: #f5f7fb;
+$color-surface-light: #ffffff;
+$color-surface-strong-light: #f0f3f9;
+$color-border-light: #dfe6f2;
+$color-text-light: #1f2937;
+$color-muted-light: #4b5563;
+$color-muted-strong-light: #374151;
+$shadow-light: 0 15px 35px rgba(0, 0, 0, 0.12);
+$shadow-panel-light: 0 10px 24px rgba(0, 0, 0, 0.12);
+
+:root {
+    --background-color: #{$color-background-dark};
+    --surface-color: #{$color-surface-dark};
+    --surface-strong-color: #{$color-surface-strong-dark};
+    --border-color: #{$color-border-dark};
+    --text-color: #{$color-text-dark};
+    --muted-color: #{$color-muted-dark};
+    --muted-strong-color: #{$color-muted-strong-dark};
+    --accent-color: #{$color-accent};
+    --accent-contrast: #{$color-accent-contrast};
+    --card-shadow: #{$shadow-dark};
+    --panel-shadow: #{$shadow-panel-dark};
+    --nav-bg-color: rgba(12, 17, 26, 0.92);
+    --nav-hover-bg: rgba(255, 255, 255, 0.06);
+    --nav-hover-text: #e8f3ff;
+    --nav-shadow: #{$shadow-panel-dark};
+    --nav-sheen: rgba(123, 182, 237, 0.08);
+    --footer-bg-color: #0d121b;
+}
+
+[data-theme="light"] {
+    --background-color: #{$color-background-light};
+    --surface-color: #{$color-surface-light};
+    --surface-strong-color: #{$color-surface-strong-light};
+    --border-color: #{$color-border-light};
+    --text-color: #{$color-text-light};
+    --muted-color: #{$color-muted-light};
+    --muted-strong-color: #{$color-muted-strong-light};
+    --accent-color: #{$color-accent};
+    --accent-contrast: #{$color-accent-contrast};
+    --card-shadow: #{$shadow-light};
+    --panel-shadow: #{$shadow-panel-light};
+    --nav-bg-color: rgba(255, 255, 255, 0.9);
+    --nav-hover-bg: rgba(123, 182, 237, 0.15);
+    --nav-hover-text: #0f172a;
+    --nav-shadow: #{$shadow-light};
+    --nav-sheen: rgba(123, 182, 237, 0.1);
+    --footer-bg-color: #f0f3f9;
+}

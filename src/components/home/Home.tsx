@@ -5,6 +5,7 @@ import { Server } from "@/Server";
 import { DiscordBox } from "../dashboard/DiscordBox";
 import { LanyardData, LanyardResponse } from "./dtos/LanyardTypes";
 import "./Home.scss";
+import { Container } from "react-bootstrap";
 
 
 const URL = `https://api.lanyard.rest/v1/users/${import.meta.env.VITE_DISCORD_ID}`;
@@ -25,47 +26,15 @@ export const Home: FC = () =>
             description: "A playful space sim to explore the Yarkovsky effect on asteroids.",
             href: import.meta.env.VITE_YARKNET_URL || "https://yarknet.trueongod.com/",
             tags: ["Visualization", "Physics"]
-        },
-        {
-            title: "GitHub",
-            description: "Repos, experiments, and all the half-finished rabbit holes.",
-            href: import.meta.env.VITE_GITHUB_URL || "https://github.com/"
-        },
-        {
-            title: "More coming soon",
-            description: "Shipping frequently — expect new drops, tools, and writeups.",
-            href: import.meta.env.VITE_PORTFOLIO_URL || "https://github.com/"
         }
     ];
 
     const highlightStats = [
         { label: "Projects shipped", value: "20+" },
-        { label: "Focus areas", value: "AI, UX, systems" },
-        { label: "Now building", value: "CareerLift + space sims" }
+        { label: "Focus areas", value: "ML, UX, systems" },
+        { label: "Now building", value: "CareerLift + YarkNet" }
     ];
 
-    const socialLinks = [
-        {
-            label: "GitHub",
-            href: import.meta.env.VITE_GITHUB_URL || "https://github.com/",
-            icon: <SiGithub size={18} />
-        },
-        {
-            label: "ArtStation",
-            href: "https://www.artstation.com/Datronizer",
-            icon: <SiArtstation size={18} />
-        },
-        {
-            label: "LeetCode",
-            href: "https://leetcode.com/u/Datronizer/",
-            icon: <SiLeetcode size={18} />
-        },
-        {
-            label: "LinkedIn",
-            href: "https://www.linkedin.com/in/tqc/",
-            icon: <SiLinkedin size={18} />
-        }
-    ];
 
     useEffect(() =>
     {
@@ -85,10 +54,10 @@ export const Home: FC = () =>
 
     return (
         <div className="home-page">
-            <div className="content-shell">
+            <Container className="content-shell">
                 <section className="hero-grid">
                     <div className="hero-card">
-                        <div className="eyebrow">Product engineer & tinkerer</div>
+                        <div className="eyebrow">Full stack developer & tinkerer</div>
                         <h1 className="hero-title">Building thoughtful tools with a playful edge.</h1>
                         <p className="lede">
                             I design, code, and ship interfaces that feel deliberate — from AI products to tiny simulations
@@ -146,7 +115,7 @@ export const Home: FC = () =>
                         ))}
                     </div>
                 </section>
-            </div>
+            </Container>
         </div>
     );
 }

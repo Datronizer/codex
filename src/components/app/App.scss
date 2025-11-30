@@ -1,9 +1,15 @@
 @use "../../const.scss" as const;
 
 .App {
-    background-color: #0b1018;
-    color: #e5eef9;
+    background-color: var(--background-color);
+    color: var(--text-color);
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-body {
+    flex: 1;
     display: flex;
     flex-direction: column;
 }

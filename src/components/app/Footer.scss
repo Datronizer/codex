@@ -1,14 +1,14 @@
 @use "sass:color";
 
-$bg: #0d121b;
-$border: #1f2a3a;
-$muted: #8ca0bb;
-$accent: #7cc8ff;
+$bg: var(--footer-bg-color);
+$border: var(--border-color);
+$muted: var(--muted-color);
+$accent: var(--accent-color);
 
 footer {
     padding: 2.5rem 1.5rem;
     background: $bg;
-    color: #e5eef9;
+    color: var(--text-color);
     border-top: 1px solid $border;
 }
 
@@ -38,24 +38,28 @@ footer > div > div {
             align-items: center;
             border-radius: 0.9rem;
             border: 1px solid $border;
-            background: rgba(255, 255, 255, 0.02);
-            color: #e5eef9;
-            transition: transform 140ms ease, border-color 150ms ease, background 150ms ease;
+            background: var(--surface-color);
+            color: var(--text-color);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+            transition: transform 140ms ease, border-color 150ms ease, background 150ms ease, color 150ms ease, box-shadow 150ms ease;
 
             :first-child {
                 border-right: 0;
             }
 
             &:hover {
-                background: color.adjust($bg, $lightness: 4%);
-                border-color: color.adjust($border, $lightness: 12%);
+                background: var(--accent-color);
+                border-color: var(--accent-color);
+                color: var(--accent-contrast);
                 transform: translateY(-2px);
+                box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
             }
 
             span {
                 display: flex;
                 gap: 0.65rem;
                 align-items: center;
+                color: inherit;
             }
         }
     }

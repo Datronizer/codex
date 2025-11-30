@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+$bg: var(--background-color);
+$surface: var(--surface-color);
+$surface-strong: var(--surface-strong-color);
+$border: var(--border-color);
+$accent: var(--accent-color);
+$muted: var(--muted-color);
+$shadow: var(--card-shadow);
+
+.resume-page {
+    min-height: 100vh;
+    background: $bg;
+    color: var(--text-color);
+    font-family: "Space Grotesk", "DM Sans", "Helvetica Neue", sans-serif;
+}
+
+.resume-shell {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.7rem;
+    color: $muted;
+    font-weight: 700;
+}
+
+.resume-hero {
+    background: $surface;
+    border: 1px solid $border;
+    border-radius: 1.25rem;
+    padding: 2rem;
+    box-shadow: $shadow;
+    backdrop-filter: blur(8px);
+
+    h1 {
+        margin: 0.5rem 0 0.75rem;
+        font-size: clamp(2.1rem, 4vw, 2.8rem);
+        line-height: 1.15;
+    }
+
+    .lede {
+        color: $muted;
+        max-width: 62ch;
+        line-height: 1.6;
+        margin: 0.5rem 0 1.25rem;
+    }
+}
+
+.resume-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.75rem;
+}
+
+.stat-card {
+    border: 1px solid $border;
+    border-radius: 0.9rem;
+    padding: 0.9rem 1rem;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.stat-value {
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin-bottom: 0.15rem;
+}
+
+.stat-label {
+    color: $muted;
+    font-size: 0.9rem;
+}
+
+.timeline-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.section-heading h2 {
+    margin: 0.15rem 0;
+}
+
+.section-subtitle {
+    color: $muted;
+    margin: 0.25rem 0 0;
+}
+
+.timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-left: 1.5rem;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 0.45rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    background: $accent;
+}
+
+.timeline-card {
+    position: relative;
+    display: flex;
+    gap: 1rem;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -1.05rem;
+    top: 1rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 999px;
+    background: $accent;
+    box-shadow: 0 0 0 6px rgba(168, 216, 255, 0.15);
+}
+
+.timeline-card__body {
+    flex: 1;
+    background: $surface-strong;
+    border: 1px solid $border;
+    border-radius: 1rem;
+    padding: 1.2rem 1.4rem;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.card-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.card-subtitle {
+    color: $muted;
+    margin-top: 0.25rem;
+}
+
+.card-dates {
+    color: $muted;
+    font-size: 0.95rem;
+}
+
+.card-meta {
+    color: $muted;
+    margin-top: 0.35rem;
+    font-size: 0.95rem;
+}
+
+.duty-list {
+    margin: 0.65rem 0 0;
+    padding-left: 1.1rem;
+    color: #dbe7f5;
+    display: grid;
+    gap: 0.35rem;
+}
+
+.pill-row {
+    display: flex;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+    margin-top: 0.6rem;
+}
+
+.pill {
+    border-radius: 999px;
+    border: 1px solid $border;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.02);
+    color: $muted;
+}
+
+@media (max-width: 680px) {
+    .resume-shell {
+        padding: 2.5rem 1rem 3rem;
+    }
+
+    .timeline {
+        padding-left: 1.2rem;
+    }
+
+    .timeline-marker {
+        left: -1.2rem;
+    }
+
+    .timeline::before {
+        left: 0.3rem;
+    }
+}
