@@ -1,4 +1,4 @@
-import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import HexViewer from "../hex-viewer/HexViewer";
 import { ObsidianViewer } from "../obsidian/ObsidianViewer";
@@ -16,29 +16,21 @@ import { Home } from "../home/Home";
 export function AppRouter()
 {
     return (
-        <>
-            <Routes>
-                {/* <Route path="" element={<LoadingScreen />} /> */}
-                <Route path="" element={<Home />} />
-                {/* <Route path="home/intro" element={<LoadingScreen />} /> */}
-                {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="hex" element={<HexViewer />} />
+            <Route path="obsidian" element={<ObsidianViewer />} />
 
-                <Route path="hex" element={<HexViewer />} />
-                <Route path="obsidian" element={<ObsidianViewer />} />
+            <Route path="about">
+                <Route index element={<AboutMe />} />
+                <Route path="coding" element={<Coding />} />
+                <Route path="writing" element={<Writing />} />
+                <Route path="site" element={<AboutSite />} />
+            </Route>
 
-                <Route path="about">
-                    <Route path="" element={<AboutMe />} />
-                    <Route path="coding" element={<Coding />} />
-                    <Route path="writing" element={<Writing />} />
-                    <Route path="site" element={<AboutSite />} />
-                </Route>
+            <Route path="resume" element={<Resume />} />
 
-                <Route path="resume">
-                    <Route path="" element={<Resume />} />
-                </Route>
-
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-        </>
+            <Route path="*" element={<NotFound />} />
+        </Routes>
     );
 }

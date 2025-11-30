@@ -4,31 +4,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/App';
 import reportWebVitals from './reportWebVitals';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import './stylesheets/css/index.css';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
+import { applyStoredTheme } from './theme';
 
-const getInitialTheme = (): "dark" | "light" =>
-{
-  if (typeof window === "undefined")
-  {
-    return "dark";
-  }
-
-  try
-  {
-    const stored = localStorage.getItem("theme");
-    return stored === "light" ? "light" : "dark";
-  } catch
-  {
-    return "dark";
-  }
-};
-
-const initialTheme = getInitialTheme();
-document.documentElement.setAttribute("data-theme", initialTheme);
+applyStoredTheme();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
