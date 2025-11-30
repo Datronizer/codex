@@ -8,6 +8,11 @@ export default function App()
 {
     const [theme, setTheme] = useState<"dark" | "light">(() =>
     {
+        const attr = document.documentElement.getAttribute("data-theme");
+        if (attr === "light" || attr === "dark")
+        {
+            return attr;
+        }
         const stored = localStorage.getItem("theme");
         return stored === "light" ? "light" : "dark";
     });

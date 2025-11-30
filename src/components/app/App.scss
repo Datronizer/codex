@@ -8,6 +8,51 @@
     flex-direction: column;
 }
 
+.button,
+.btn,
+button,
+.primary-button,
+.ghost-button,
+.nav-cta,
+.theme-toggle,
+.view-profile {
+    border: 1px solid var(--border-color);
+    border-radius: 0.85rem;
+    background: var(--surface-color);
+    color: var(--text-color);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+    transition: transform 140ms ease, border-color 150ms ease, background 150ms ease, color 150ms ease, box-shadow 150ms ease;
+    text-decoration: none;
+}
+
+.button:hover,
+.btn:hover,
+button:hover,
+.primary-button:hover,
+.ghost-button:hover,
+.nav-cta:hover,
+.theme-toggle:hover,
+.view-profile:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--accent-contrast);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+.navbar-toggler {
+    background: transparent;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: none;
+}
+
+.navbar-toggler:hover {
+    background: var(--nav-hover-bg);
+    color: var(--nav-hover-text);
+    transform: none;
+    box-shadow: none;
+}
+
 .app-body {
     flex: 1;
     display: flex;

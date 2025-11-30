@@ -169,7 +169,7 @@ $shadow: var(--card-shadow);
 .duty-list {
     margin: 0.65rem 0 0;
     padding-left: 1.1rem;
-    color: #dbe7f5;
+    color: var(--text-color);
     display: grid;
     gap: 0.35rem;
 }

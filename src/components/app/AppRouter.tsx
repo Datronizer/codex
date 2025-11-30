@@ -16,7 +16,7 @@ import { Home } from "../home/Home";
 export function AppRouter()
 {
     return (
-        <BrowserRouter>
+        <>
             <Routes>
                 {/* <Route path="" element={<LoadingScreen />} /> */}
                 <Route path="" element={<Home />} />
@@ -39,6 +39,6 @@ export function AppRouter()
 
                 <Route path="*" element={<NotFound />} />
             </Routes>
-        </BrowserRouter>
+        </>
     );
 }
