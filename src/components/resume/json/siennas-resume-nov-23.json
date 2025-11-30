@@ -1,6 +1,23 @@
 {
     "education": [
         {
+            "institution": "Sheridan College Institute of Technology and Advanced Learning",
+            "start": "2023-08-28",
+            "end": "2026-12-31",
+            "degree": "Ontario Advanced Diploma",
+            "majors": [
+                "Software Development & Network Engineering"
+            ],
+            "minors": [],
+            "gpa": 3.71,
+            "achievements": [
+                "7th Place Skills Ontario Provincial Championship 2025",
+                "1st Place Skills Sheridan AWS Cloud Computing Competition 2025",
+                "1st Place Skills Sheridan AWS Cloud Computing Competition 2024"
+            ],
+            "accolades": []
+        },
+        {
             "institution": "University of South Florida - Tampa campus",
             "start": "2018-08-28",
             "end": "2022-05-17",
@@ -11,7 +28,7 @@
             "minors": [
                 "Mathematics"
             ],
-            "gpa": 3.58,
+            "gpa": 3.64,
             "achievements": [
                 "Graduated Cum Laude",
                 "On Dean's List for 3 years",
@@ -25,12 +42,12 @@
     ],
     "work": [
         {
-            "title": "HAHAHAHAHAHA",
-            "workplace": "University of South Florida",
-            "division": "Institute of Applied Engineering",
-            "location": "Brampton, ON",
-            "start": "2021-05-01",
-            "end": "2021-08-31",
+            "title": "Full Stack Developer",
+            "workplace": "NextRenaissance",
+            "division": null,
+            "location": "Hamilton, ON",
+            "start": "2025-01-15",
+            "end": null,
             "duties": [
                 "Researched the nature of social affordance and discussed the possibility of integrating into artificial agents.",
                 "Singlehandedly integrated literature on the task-understanding, object-oriented neural network, FOON, and video game modeling into final version of white paper",
@@ -39,14 +56,28 @@
             ]
         },
         {
+            "title": "Developer - Co-op",
+            "workplace": "Holman CA",
+            "division": null,
+            "location": "Mississauga, ON - Hybrid",
+            "start": "2024-05-10",
+            "end": "2024-08-20",
+            "duties": [
+                "Developed a modular template in ReactJS to streamline web application development for 20+ future apps.",
+                "Conducted vulnerability assessments and patched security flaws in 12 applications to enhance system security, parameterized fields for OracleSQL and ASP.NET.",
+                "Utilized Azure DevOps to track tasks and manage project workflows, peaking at 12 completed a week.",   
+                "Received soft skills training to help with daily corporate workplace communication."
+            ]
+        },
+        {
             "title": "Junior Software Developer",
             "workplace": "uYeti Entertainment",
             "division": null,
             "location": "Remote",
             "start": "2022-07-08",
-            "end": null,
+            "end": "2024-12-31",
             "duties": [
-                "Developed the front-end & backend of a football admin panel which tracks expenditure, wins, and matches assigned to machines.", 
+                "Developed the front-end & backend of a football admin panel which tracks expenditure, wins, and matches assigned to machines.",
                 "Designed front-end UI systems such as keyboards, numpads, etc. from scratch using Unity Engine and C#.",
                 "Built backend admin panels for live service games using ReactJS, TypeScript, and Docker; worked closely with tech lead to implement live data from client machines to compute payouts.",
                 "Performed QA, bug-fixing, and front-end development for a Match-3 mobile game using Phaser 2 and ReactJS."
