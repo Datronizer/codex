@@ -11,10 +11,10 @@ export function Footer()
             <Container fluid>
                 <Row>
                     <Col>
-                        Thanks for dropping by.
+                        Thanks for visiting my corner of the internet!
                     </Col>
                     <Col>
-                        I share what I'm building across AI tools, simulations, and design systems. If something sparks an idea, let's collaborate.
+                        You can reach me at the sites below:
                     </Col>
                 </Row>
                 <Row className="footer-external-links">

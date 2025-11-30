@@ -1,5 +1,4 @@
 @use "../../stylesheets/scss/homepage/activity";
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 
 $surface: var(--surface-color);
@@ -11,12 +10,6 @@ $muted: var(--muted-color);
 $muted-strong: var(--muted-strong-color);
 $card-shadow: var(--card-shadow);
 
-.home-page {
-    min-height: 100vh;
-    background: var(--background-color);
-    color: var(--text-color);
-    font-family: "Space Grotesk", "DM Sans", "Helvetica Neue", sans-serif;
-}
 
 .content-shell {
     padding: 3.5rem 1.5rem 4rem;
@@ -35,13 +28,13 @@ $card-shadow: var(--card-shadow);
 
 .hero-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+    // grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
     gap: 1.5rem;
     align-items: stretch;
 
-    @media (max-width: 960px) {
-        grid-template-columns: 1fr;
-    }
+    // @media (max-width: 960px) {
+    //     grid-template-columns: 1fr;
+    // }
 }
 
 .hero-card {
@@ -122,6 +115,20 @@ $card-shadow: var(--card-shadow);
     border-radius: 0.75rem;
     padding: 0.85rem 1rem;
     background: rgba(255, 255, 255, 0.02);
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+
+    &.clickable {
+        cursor: pointer;
+        transition: transform 120ms ease, border-color 120ms ease, box-shadow 160ms ease;
+
+        &:hover {
+            transform: translateY(-2px);
+            border-color: $accent;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        }
+    }
 }
 
 .stat-value {
@@ -133,6 +140,13 @@ $card-shadow: var(--card-shadow);
 .stat-label {
     color: $muted-strong;
     font-size: 0.9rem;
+}
+
+.stat-icon {
+    position: absolute;
+    right: 0.85rem;
+    top: 0.85rem;
+    color: $muted;
 }
 
 .status-panel {

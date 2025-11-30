@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
-
 $bg: var(--nav-bg-color);
 $border: var(--border-color);
 $accent: var(--accent-color);
@@ -14,7 +12,6 @@ $muted: var(--muted-color);
     z-index: 30;
     padding: 0.75rem 1.25rem;
     box-shadow: var(--nav-shadow);
-    font-family: "Space Grotesk", "DM Sans", "Helvetica Neue", sans-serif;
 }
 
 .nav-sheen {

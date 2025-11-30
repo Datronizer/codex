@@ -20,6 +20,8 @@ $color-muted-light: #4b5563;
 $color-muted-strong-light: #374151;
 $shadow-light: 0 15px 35px rgba(0, 0, 0, 0.12);
 $shadow-panel-light: 0 10px 24px rgba(0, 0, 0, 0.12);
+$font-base: "Space Grotesk", "DM Sans", "Helvetica Neue", Arial, sans-serif;
+$font-heading: "Space Grotesk", "DM Sans", "Helvetica Neue", Arial, sans-serif;
 
 :root {
     --background-color: #{$color-background-dark};
@@ -39,6 +41,8 @@ $shadow-panel-light: 0 10px 24px rgba(0, 0, 0, 0.12);
     --nav-shadow: #{$shadow-panel-dark};
     --nav-sheen: rgba(123, 182, 237, 0.08);
     --footer-bg-color: #0d121b;
+    --font-base: #{$font-base};
+    --font-heading: #{$font-heading};
 }
 
 [data-theme="light"] {
@@ -59,4 +63,6 @@ $shadow-panel-light: 0 10px 24px rgba(0, 0, 0, 0.12);
     --nav-shadow: #{$shadow-light};
     --nav-sheen: rgba(123, 182, 237, 0.1);
     --footer-bg-color: #f0f3f9;
+    --font-base: #{$font-base};
+    --font-heading: #{$font-heading};
 }

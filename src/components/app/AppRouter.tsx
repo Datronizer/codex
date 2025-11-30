@@ -10,8 +10,7 @@ import { AboutSite } from "../resume/AboutSite";
 import { Resume } from "../resume/Resume";
 import { NotFound } from "./NotFound";
 import { Home } from "../home/Home";
-// import { LoadingScreen } from "../home/LoadingScreen";
-// import Home from "components/home/Home";
+
 
 export function AppRouter()
 {
@@ -25,8 +24,9 @@ export function AppRouter()
                 <Route index element={<AboutMe />} />
                 <Route path="coding" element={<Coding />} />
                 <Route path="writing" element={<Writing />} />
-                <Route path="site" element={<AboutSite />} />
             </Route>
+
+            <Route path="blog" element={<AboutSite />} />
 
             <Route path="resume" element={<Resume />} />
 
