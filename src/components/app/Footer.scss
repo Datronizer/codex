@@ -1,0 +1,70 @@
+@use "sass:color";
+
+$bg: var(--footer-bg-color);
+$border: var(--border-color);
+$muted: var(--muted-color);
+$accent: var(--accent-color);
+
+footer {
+    padding: 2.5rem 1.5rem;
+    background: $bg;
+    color: var(--text-color);
+    border-top: 1px solid $border;
+}
+
+footer .container-fluid {
+    max-width: 1200px;
+}
+
+footer > div > div {
+    padding: 0.6rem 0;
+    border: none;
+}
+
+.footer-external-links {
+    padding: 0.75rem 0 0.25rem;
+
+    .col {
+        padding: 0.35rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        button {
+            padding: 0.85rem 1.1rem;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 0.9rem;
+            border: 1px solid $border;
+            background: var(--surface-color);
+            color: var(--text-color);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+            transition: transform 140ms ease, border-color 150ms ease, background 150ms ease, color 150ms ease, box-shadow 150ms ease;
+
+            :first-child {
+                border-right: 0;
+            }
+
+            &:hover {
+                background: var(--accent-color);
+                border-color: var(--accent-color);
+                color: var(--accent-contrast);
+                transform: translateY(-2px);
+                box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+            }
+
+            span {
+                display: flex;
+                gap: 0.65rem;
+                align-items: center;
+                color: inherit;
+            }
+        }
+    }
+}
+
+footer .row:first-child {
+    color: $muted;
+}

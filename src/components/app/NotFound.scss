@@ -1,0 +1,9 @@
+@use "../../const" as const;
+
+.not-found {
+    text-align: center;
+    font-size: 3rem;
+
+    // height: calc(100vh - const.$footer-height);
+    height: 100%;
+}

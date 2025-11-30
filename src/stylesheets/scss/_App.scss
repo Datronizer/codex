@@ -1,5 +1,9 @@
 .App {
-  text-align: center;
+  height: 100%;
+  color: #fff;
+  background-color: #008080;
+
+  font-family: "Oswald" sans-serif;
 }
 
 .App-logo {
@@ -32,6 +36,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

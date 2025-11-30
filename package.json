@@ -6,21 +6,34 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.16",
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
+    "bootstrap": "^5.2.3",
+    "buffer": "^6.0.3",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
+    "crypto-browserify": "^3.12.0",
+    "eslint": "^8.36.0",
+    "luxon": "^3.4.3",
+    "marked": "^9.1.4",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.8.2",
+    "reflect-metadata": "^0.1.13",
+    "sass": "^1.92.0",
+    "stylelint": "^16.1.0",
+    "stylelint-config-standard-scss": "^12.0.0",
+    "texme": "^1.2.2",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "compile-css": "sass ./src/stylesheets/scss/index.scss ./src/stylesheets/css/index.css",
+    "watch-css": "sass --watch ./src/stylesheets/scss/index.scss ./src/stylesheets/css/index.css"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +52,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/luxon": "^3.3.4",
+    "@types/react": "^18.2.34",
+    "@types/react-dom": "^18.2.14",
+    "@vitejs/plugin-react": "^5.0.2",
+    "vite": "^7.1.4",
+    "vitest": "^3.2.4"
   }
 }
